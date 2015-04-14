@@ -1,179 +1,124 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PO_GENERATE.aspx.cs" Inherits="IMS.PO_GENERATE" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            width: 273px;
-        }
+    <style>
+		.main{
+			font-family:"Calibri", Arial, Helvetica, sans-serif;
+			font-size:16px;
+			margin:0px auto;
+			width:860px;
+			position:relative;
+			}
+			
+		.invo-tbl{
+			margin-bottom:5px;
+			border-top:1px solid #000;
+			border-left:1px solid #000;
+			}
+			
+		.invo-tbl tr td{
+			border-right:1px solid #000;
+			border-bottom:1px solid #000;
+			}
+			
+		.underline{
+			width:90px;
+			border-bottom:1px solid #000;
+			text-align:center;
+			display:block;
+			float:right;
+			}
+		h1.main-h{
+			text-align:center;
 
-        .auto-style2 {
-            font-size: large;
-        }
+			width:747px;
+			margin:5px 0;
+			}
+			
+		.bold{
+			font-weight:bold;
+			}
+			
+		.datarow{
+			
+			}
+			
+		.datarow td{
+			border-bottom:0px !important;
+			}
+			
+		.fr{
+			float:right;
+			font-size:18px;
+			}
+		.fr td{
+			padding:3px;
+			}
+			
+		.date{
+			display:block;
 
-        .auto-style3 {
-            width: 916px;
-        }
-
-        .auto-style4 {
-            width: 758px;
-        }
+			}
+		.signs{
+			font-size:14px;
+			}
 
         @media print {
             .no-print, .no-print * {
                 display: none !important;
             }
         }
-    </style>
+	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="form-horizontal" runat="server" id="MAINDIV" visible="true">
-
-        <table style="width: 100%;" align="center" border="0">
-            <tr>
-                <td class="auto-style2">
-                    <h3><strong>PURCHASE ORDER</strong></h3>
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:Label runat="server" ID="PO_Numberlbl" CssClass="col-md-2 control-label" Width="200px">P.O Number : </asp:Label></td>
-                <td>
-                    <asp:Label runat="server" ID="PO_Number" CssClass="col-md-2 control-label" Text="---" Width="300px"></asp:Label></td>
-
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="auto-style1">
-                    <asp:Label runat="server" ID="PO_Datelbl" CssClass="col-md-2 control-label" Width="200px">P.O Date : </asp:Label></td>
-                <td>
-                    <asp:Label runat="server" ID="PO_Date" CssClass="col-md-2 control-label" Text="---" Width="300px"></asp:Label></td>
-            </tr>
-
-            <tr>
-                <td class="auto-style1">
-                    <br />
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td class="text-left">
-                    <h4>ORDER BY : </h4>
-                    <asp:Label runat="server" ID="PO_FromName" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="text-left">
-                    <h4>ORDER FROM : </h4>
-                    <asp:Label runat="server" ID="PO_ToName" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label></td>
-            </tr>
-            <tr>
-                <td class="text-left">
-                    <asp:Label runat="server" ID="PO_FromAddress" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="text-left">
-                    <asp:Label runat="server" ID="PO_ToAddress" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label></td>
-            </tr>
-            <tr>
-                <td class="auto-style1">
-                    <asp:Label runat="server" ID="PO_FromPhone" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label></td>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:Label runat="server" ID="PO_ToPhone" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style1"></td>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:Label runat="server" ID="PO_ToEmail" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td></td>
-                <td>&nbsp;</td>
-                <td></td>
+    <div class="main" id="MAINDIV" runat="server">
+        <h1 class="main-h">PURCHASE ORDER</h1>
+        <table cellpadding="5" width="100%" cellspacing="0">
+        	<tr>
+            	<td> <asp:Label runat="server" ID="PO_Numberlbl" CssClass="col-md-2 control-label" Width="200px">P.O Number : </asp:Label> <asp:Label runat="server" ID="PO_Number" CssClass="col-md-2 control-label" Text="---" Width="100px"></asp:Label></td></td>
+                <td align="right"><asp:Label runat="server" ID="PO_Datelbl" CssClass="col-md-2 control-label" Width="200px">P.O Date : </asp:Label> <span class="date"><asp:Label runat="server" ID="PO_Date" CssClass="col-md-2 control-label" Text="---" Width="300px"></asp:Label></span></td>
+               
+        </tr>
+        </table>
+        <br /><br />
+         <table cellpadding="5" width="100%" cellspacing="0">
+        	<tr>
+            	<td width="403" valign="top"><strong>ORDER BY:</strong><br />
+           	    <asp:Label runat="server" ID="PO_FromName" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+           	    <asp:Label runat="server" ID="PO_FromAddress" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+       	        <asp:Label runat="server" ID="PO_FromPhone" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br /></td>
+                <td width="322" valign="top" ><strong>ORDER FROM:</strong><br />
+           	    <asp:Label runat="server" ID="PO_ToName" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+           	    <asp:Label runat="server" ID="PO_ToAddress" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+       	        <asp:Label runat="server" ID="PO_ToPhone" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+                <asp:Label runat="server" ID="PO_ToEmail" CssClass="col-md-2 control-label" Text="---" Width="100%"></asp:Label><br />
+              </td>
             </tr>
         </table>
-        <br />
-    </div>
+        <br /><br /><br />
 
-    <div class="form-horizontal">
+
+   
         <asp:GridView ID="StockDisplayGrid" CssClass="table table-striped table-bordered table-condensed" Visible="true" runat="server" AllowPaging="false" PageSize="10"
             AutoGenerateColumns="false" OnPageIndexChanging="StockDisplayGrid_PageIndexChanging" OnRowDataBound="StockDisplayGrid_RowDataBound">
             <Columns>
-                 <asp:TemplateField HeaderText=" Ordered Product Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:Label ID="ProductName2" padding-right="5px" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
-                            <asp:Label ID="Label1" padding-right="5px" runat="server" Text=" : "></asp:Label>
-                            <asp:Label ID="ProductStrength2" padding-right="5px" runat="server" Text='<%# Eval("strength") %>'  ></asp:Label>
-                            <asp:Label ID="Label2" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="dosage2"  runat="server" Text='<%# Eval("dosageForm") %>' padding-right="5px" ></asp:Label>
-                            <asp:Label ID="Label3" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="packSize2" runat="server" Text='<%# Eval("PackageSize") %>' padding-right="5px" ></asp:Label>
-                        </ItemTemplate>
-                        
-                    </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ordered Product" Visible="false" HeaderStyle-Width="250px">
+                <asp:TemplateField HeaderText="Ordered Product" Visible="true" HeaderStyle-Width="350px">
                     <ItemTemplate>
-                        <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductName") %>' Width="330px"></asp:Label>
+                        <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Description") %>' Width="350px"></asp:Label>
                     </ItemTemplate>
-                    <ItemStyle Width="330px" HorizontalAlign="Left" />
+                    <ItemStyle Width="350px" HorizontalAlign="Left" />
                 </asp:TemplateField>
-                 <asp:TemplateField HeaderText="Package Size" Visible="false" HeaderStyle-Width ="160px">
-                        <ItemTemplate>
-                            <asp:Label ID="packSize" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("PackageSize") %>'  Width="150px" ></asp:Label>
-                        </ItemTemplate>
-                         <ItemStyle  Width="160px" HorizontalAlign="Left"/>
-                    </asp:TemplateField>
-                      <asp:TemplateField HeaderText="Strength" Visible="false" HeaderStyle-Width ="150px">
-                        <ItemTemplate>
-                            <asp:Label ID="ProductStrength" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("strength") %>'  Width="150px" ></asp:Label>
-                        </ItemTemplate>
-                         <ItemStyle  Width="160px" HorizontalAlign="Left"/>
-                    </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Dosage Form" Visible="false" HeaderStyle-Width ="110px">
-                        <ItemTemplate>
-                            <asp:Label ID="dosage" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("dosageForm") %>'  Width="100px" ></asp:Label>
-                        </ItemTemplate>
-                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
-                    </asp:TemplateField>
+
                 <asp:TemplateField HeaderText="Ordered Quantity" HeaderStyle-Width="150px">
                     <ItemTemplate>
                         <asp:Label ID="lblQuantity" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Qauntity") %>'></asp:Label>
+                    </ItemTemplate>
+                    <ItemStyle Width="110px" HorizontalAlign="Left" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Ordered Bonus" HeaderStyle-Width="120px">
+                    <ItemTemplate>
+                        <asp:Label ID="lblBonus" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Bonus") %>'></asp:Label>
                     </ItemTemplate>
                     <ItemStyle Width="110px" HorizontalAlign="Left" />
                 </asp:TemplateField>
@@ -194,57 +139,49 @@
 
             </Columns>
         </asp:GridView>
-        <table style="width: 100%;" id="TotalCostDiv" runat="server" visible="true">
-            <tr>
-                <td>
-                    <br />
-                    <br />
-                </td>
-                <td class="auto-style3">&nbsp;</td>
-                <td>
-                    <asp:Label ID="lblTotalCostALL" runat="server" Style="font-weight: 700"></asp:Label></td>
-            </tr>
-            <tr>
+
+        <table cellpadding="4" cellspacing="0" align="right">
+        	<tr>
+            	<td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><strong>Sign:</strong> ________________</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+
+
+	            <td class="signs">Total Cost:</td><td><span class="underline"><asp:Label ID="lblTotalCostALL" runat="server" Style="font-weight: 700"></asp:Label></span></td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><strong>Company Stamp:</strong> ____________</td>
+            	<td colspan="100%" height="5"></td>
             </tr>
+            
             <tr>
+              	<td >&nbsp;</td>
                 <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><br /></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            
+                <td class="signs">Sign:</td><td><span class="underline">&nbsp;</span></td>
             </tr>
+            
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><strong>Prepared By:</strong> ____________</td>
+            	<td colspan="100%" height="5"></td>
             </tr>
+            
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><br /></td>
+            <td class="signs">Prepared By:</td><td><span class="underline">&nbsp;</span></td>
+            <td class="signs">Checked By:</td><td><span class="underline">&nbsp;</span></td>
+            <td class="signs">Received By:</td><td><span class="underline">&nbsp;</span></td>
+                <td class="signs">Company Stamp:</td><td><span class="underline">&nbsp;</span></td>
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><strong>Checked By:</strong> ____________</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><br /></td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td><strong>Received By:</strong> ____________</td>
-            </tr>
+           
         </table>
+        <br />
+    </div>
+    <div class="form-horizontal">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button ID="btnPrint" runat="server" OnClientClick="window.print();" Text="PRINT" CssClass="btn btn-large no-print" Visible="true" />
@@ -253,6 +190,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>

@@ -67,15 +67,6 @@ namespace IMS {
         protected global::System.Web.UI.WebControls.Label PO_FromName;
         
         /// <summary>
-        /// PO_ToName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PO_ToName;
-        
-        /// <summary>
         /// PO_FromAddress control.
         /// </summary>
         /// <remarks>
@@ -85,15 +76,6 @@ namespace IMS {
         protected global::System.Web.UI.WebControls.Label PO_FromAddress;
         
         /// <summary>
-        /// PO_ToAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PO_ToAddress;
-        
-        /// <summary>
         /// PO_FromPhone control.
         /// </summary>
         /// <remarks>
@@ -101,6 +83,24 @@ namespace IMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PO_FromPhone;
+        
+        /// <summary>
+        /// PO_ToName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PO_ToName;
+        
+        /// <summary>
+        /// PO_ToAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PO_ToAddress;
         
         /// <summary>
         /// PO_ToPhone control.
@@ -128,15 +128,6 @@ namespace IMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView StockDisplayGrid;
-        
-        /// <summary>
-        /// TotalCostDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TotalCostDiv;
         
         /// <summary>
         /// lblTotalCostALL control.

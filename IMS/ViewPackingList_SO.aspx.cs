@@ -26,10 +26,10 @@ namespace IMS
                 DataSet dsTo = GetSystems(Convert.ToInt32(Session["RequestedFromID"].ToString()));
                 DataSet dsFROM = GetSystems(Convert.ToInt32(Session["UserSys"].ToString()));
                 SendDate.Text = "Send Date : " + System.DateTime.Now.ToShortDateString();
-                From.Text = "From : " + dsFROM.Tables[0].Rows[0]["SystemName"].ToString();
-                FromAddress.Text = "Address : " + dsFROM.Tables[0].Rows[0]["SystemAddress"].ToString();
-                To.Text = "To : " + dsTo.Tables[0].Rows[0]["SystemName"].ToString();
-                ToAddress.Text = "Address : " + dsTo.Tables[0].Rows[0]["SystemAddress"].ToString();
+                From.Text = dsFROM.Tables[0].Rows[0]["SystemName"].ToString();
+                FromAddress.Text = dsFROM.Tables[0].Rows[0]["SystemAddress"].ToString();
+                To.Text = dsTo.Tables[0].Rows[0]["SystemName"].ToString();
+                ToAddress.Text = dsTo.Tables[0].Rows[0]["SystemAddress"].ToString();
                 #endregion
             }
         }

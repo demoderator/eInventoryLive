@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderPurchaseManual.aspx.cs" Inherits="IMS.OrderPurchaseManual" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <h3>Manual Purchase Order(s)</h3>
+      <h3>Manual Purchase Order(s)</h3>
     <br />
     <br />
     <div class="row">
@@ -39,15 +40,15 @@
     <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="SelectQuantity" CssClass="col-md-2 control-label">Enter Quantity</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="SelectQuantity" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="SelectQuantity" CssClass="form-control" autocomplete="off" />
                 <br />
             </div>
     </div>
 
     <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="SelectPrice" CssClass="col-md-2 control-label">Enter Price</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="SelectPrice" CssClass="col-md-2 control-label">Enter Bonus Quantity</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="SelectPrice" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="SelectPrice" CssClass="form-control" autocomplete="off" />
                 <br />
             </div>
     </div>
@@ -109,23 +110,11 @@
                          
                          <ItemStyle  Width="110px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                      <asp:TemplateField HeaderText="Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
+                     <asp:TemplateField HeaderText="Product Description" Visible="true" HeaderStyle-Width ="330px">
                         <ItemTemplate>
-                            <asp:Label ID="ProductName2" padding-right="5px" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
-                            <asp:Label ID="Label1" padding-right="5px" runat="server" Text=" : "></asp:Label>
-                            <asp:Label ID="ProductStrength2" padding-right="5px" runat="server" Text='<%# Eval("strength") %>'  ></asp:Label>
-                            <asp:Label ID="Label2" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="dosage2"  runat="server" Text='<%# Eval("dosageForm") %>' padding-right="5px" ></asp:Label>
-                            <asp:Label ID="Label3" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="packSize2" runat="server" Text='<%# Eval("PackageSize") %>' padding-right="5px" ></asp:Label>
+                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Description") %>'  Width="330px" ></asp:Label>
                         </ItemTemplate>
-                        
-                    </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Name" Visible="false" HeaderStyle-Width ="150px">
-                        <ItemTemplate>
-                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductName") %>'  Width="150px" ></asp:Label>
-                        </ItemTemplate>
-                         <ItemStyle  Width="160px" HorizontalAlign="Left"/>
+                         <ItemStyle  Width="330px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                     
                       <asp:TemplateField HeaderText="Strength" Visible="false" HeaderStyle-Width ="150px">
@@ -158,7 +147,17 @@
                           <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                    
+                      <asp:TemplateField HeaderText="Bonus Quantity"  HeaderStyle-Width ="110px">
+                        <ItemTemplate>
+                            <asp:Label ID="lblBonusQuantity" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Bonus") %>' ></asp:Label>
+                        </ItemTemplate>
+                        
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtBonusQuantity" CssClass="form-control" runat="server" Text='<%#Eval("Bonus") %>' ></asp:TextBox>
+                            </EditItemTemplate>
+                          <ItemStyle  Width="90px" HorizontalAlign="Left"/>
+                    </asp:TemplateField>
+
                      <asp:TemplateField HeaderText="Order Status" HeaderStyle-Width ="110px">
                         <ItemTemplate>
                             <asp:Label ID="lblStatus" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Status") %>'  Width="100px"></asp:Label>
@@ -171,7 +170,7 @@
              </asp:GridView>
         <br />
          <asp:Button ID="btnAccept" runat="server" OnClick="btnAccept_Click" Text="GENERATE ORDER" CssClass="btn btn-large" Visible="false"/>
-         <asp:Button ID="btnDecline" runat="server" OnClick="btnDecline_Click" Text="CANCEL ORDER" CssClass="btn btn-large" Visible="false" />
+         <asp:Button ID="btnDecline" runat="server" OnClick="btnDecline_Click" Text="DELETE ORDER" CssClass="btn btn-large" Visible="false" />
     </div>
     <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -179,4 +178,5 @@
             </div>
         </div>
     </div>
+      
 </asp:Content>

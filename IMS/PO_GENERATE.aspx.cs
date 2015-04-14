@@ -40,7 +40,7 @@ namespace IMS
                 LoadData();
                 #region Getting & Populating Values
                 PO_Number.Text = Session["OrderNumber"].ToString();
-                PO_Date.Text = ProductSet.Tables[0].Rows[0]["OrderDate"].ToString();
+                PO_Date.Text = ((DateTime) ProductSet.Tables[0].Rows[0]["OrderDate"]).Date.ToString();
 
                 PO_FromName.Text = ProductSet.Tables[0].Rows[0]["SystemName"].ToString();
                 PO_FromAddress.Text = ProductSet.Tables[0].Rows[0]["SystemAddress"].ToString();
@@ -59,7 +59,7 @@ namespace IMS
                         TCost += Cost;
                     }
                 }
-                lblTotalCostALL.Text = "TOTAL COST: AED " + TCost;
+                lblTotalCostALL.Text = TCost.ToString();
                 #endregion
 
                 //ExportGridToPDF();
@@ -338,8 +338,8 @@ namespace IMS
                 sw.WriteLine("");
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
                 MAINDIV.RenderControl(hw);
-                StockDisplayGrid.RenderControl(hw);
-                TotalCostDiv.RenderControl(hw);
+                //StockDisplayGrid.RenderControl(hw);
+                //TotalCostDiv.RenderControl(hw);
                 StringReader sr = new StringReader(sw.ToString());
                 Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
                 HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
@@ -381,47 +381,47 @@ namespace IMS
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Label ProductStrength = (Label)e.Row.FindControl("ProductStrength2");
-                Label Label1 = (Label)e.Row.FindControl("Label1");
+                //Label ProductStrength = (Label)e.Row.FindControl("ProductStrength2");
+                //Label Label1 = (Label)e.Row.FindControl("Label1");
 
-                Label dosage = (Label)e.Row.FindControl("dosage2");
-                Label Label2 = (Label)e.Row.FindControl("Label2");
+                //Label dosage = (Label)e.Row.FindControl("dosage2");
+                //Label Label2 = (Label)e.Row.FindControl("Label2");
 
-                Label packSize = (Label)e.Row.FindControl("packSize2");
-                Label Label3 = (Label)e.Row.FindControl("Label3");
+                //Label packSize = (Label)e.Row.FindControl("packSize2");
+                //Label Label3 = (Label)e.Row.FindControl("Label3");
 
-                if (String.IsNullOrWhiteSpace(ProductStrength.Text))
-                {
-                    ProductStrength.Visible = false;
-                    Label1.Visible = false;
-                }
-                else
-                {
-                    ProductStrength.Visible = true;
-                    Label1.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(ProductStrength.Text))
+                //{
+                //    ProductStrength.Visible = false;
+                //    Label1.Visible = false;
+                //}
+                //else
+                //{
+                //    ProductStrength.Visible = true;
+                //    Label1.Visible = true;
+                //}
 
-                if (String.IsNullOrWhiteSpace(dosage.Text))
-                {
-                    dosage.Visible = false;
-                    Label2.Visible = false;
-                }
-                else
-                {
-                    dosage.Visible = true;
-                    Label2.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(dosage.Text))
+                //{
+                //    dosage.Visible = false;
+                //    Label2.Visible = false;
+                //}
+                //else
+                //{
+                //    dosage.Visible = true;
+                //    Label2.Visible = true;
+                //}
 
-                if (String.IsNullOrWhiteSpace(packSize.Text))
-                {
-                    packSize.Visible = false;
-                    Label3.Visible = false;
-                }
-                else
-                {
-                    packSize.Visible = true;
-                    Label3.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(packSize.Text))
+                //{
+                //    packSize.Visible = false;
+                //    Label3.Visible = false;
+                //}
+                //else
+                //{
+                //    packSize.Visible = true;
+                //    Label3.Visible = true;
+                //}
             }
         }  
 

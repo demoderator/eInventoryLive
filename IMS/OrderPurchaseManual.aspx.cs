@@ -32,6 +32,7 @@ namespace IMS
                     if (StockDisplayGrid.DataSource != null)
                     {
                         btnAccept.Visible = true;
+                        btnAccept.Text = "RE-GENERATE ORDER";
                         btnDecline.Visible = true;
                     }
                 }
@@ -176,11 +177,14 @@ namespace IMS
                 {
                     int quan = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtQuantity")).Text);
                     int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("OrderDetailNo")).Text);
+                    int bonusquantity = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtBonusQuantity")).Text);
+                    
                     connection.Open();  
                     SqlCommand command = new SqlCommand("sp_UpdateOrderDetailsQuantity", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderDetailID", orderDetID);
                     command.Parameters.AddWithValue("@p_Qauntity", quan);
+                    command.Parameters.AddWithValue("@p_bonusQauntity", bonusquantity);
                     
                     command.ExecuteNonQuery();
                 }
@@ -310,7 +314,7 @@ namespace IMS
                     SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByStore", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    int OrderNumber, ProductNumber, Quantity = 0;
+                    int OrderNumber, BonusOrdered, ProductNumber, Quantity = 0;
 
                     if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                     {
@@ -324,7 +328,10 @@ namespace IMS
                     {
                         command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
                     }
-
+                    if (int.TryParse(SelectPrice.Text.ToString(), out BonusOrdered))
+                    {
+                        command.Parameters.AddWithValue("@p_OrderBonusQuantity", BonusOrdered);
+                    }
                    
                     command.Parameters.AddWithValue("@p_status", "Pending");
                     command.Parameters.AddWithValue("@p_comments", "Generated to Vendor");
@@ -340,6 +347,7 @@ namespace IMS
                     connection.Close();
                 }
                 #endregion
+                
                 FirstOrder = true;
             }
             else
@@ -388,7 +396,7 @@ namespace IMS
 
                 if (ProductPresent.Equals(false))
                 {
-                    #region Linking to Order Detail table
+                  #region Linking to Order Detail table
 
                     try
                     {
@@ -396,7 +404,7 @@ namespace IMS
                         SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByStore", connection);
                         command.CommandType = CommandType.StoredProcedure;
 
-                        int OrderNumber, ProductNumber, Quantity = 0;
+                        int OrderNumber,BonusOrdered, ProductNumber, Quantity = 0;
 
                         if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                         {
@@ -410,7 +418,10 @@ namespace IMS
                         {
                             command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
                         }
-
+                        if (int.TryParse(SelectPrice.Text.ToString(), out BonusOrdered))
+                        {
+                            command.Parameters.AddWithValue("@p_OrderBonusQuantity", BonusOrdered);
+                        }
                         
                         command.Parameters.AddWithValue("@p_status", "Pending");
                         command.Parameters.AddWithValue("@p_comments", "Generated to Vendor");
@@ -528,6 +539,16 @@ namespace IMS
             }
             else
             {
+                
+                if (Session["OrderNumber"] != null)
+                {
+                    int orderID = int.Parse(Session["OrderNumber"].ToString());
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("sp_DeleteOrder", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_OrderID", orderID);
+                    command.ExecuteNonQuery();
+                }
                 Session["OrderNumber"] = "";
                 Session["FromViewPlacedOrders"] = "false";
                 Response.Redirect("PlaceOrder.aspx",false);
@@ -614,47 +635,47 @@ namespace IMS
                     btnDelete.Enabled = true;
                 }
 
-                Label ProductStrength = (Label)e.Row.FindControl("ProductStrength2");
-                Label Label1 = (Label)e.Row.FindControl("Label1");
+                //Label ProductStrength = (Label)e.Row.FindControl("ProductStrength2");
+                //Label Label1 = (Label)e.Row.FindControl("Label1");
 
-                Label dosage = (Label)e.Row.FindControl("dosage2");
-                Label Label2 = (Label)e.Row.FindControl("Label2");
+                //Label dosage = (Label)e.Row.FindControl("dosage2");
+                //Label Label2 = (Label)e.Row.FindControl("Label2");
 
-                Label packSize = (Label)e.Row.FindControl("packSize2");
-                Label Label3 = (Label)e.Row.FindControl("Label3");
+                //Label packSize = (Label)e.Row.FindControl("packSize2");
+                //Label Label3 = (Label)e.Row.FindControl("Label3");
 
-                if (String.IsNullOrWhiteSpace(ProductStrength.Text))
-                {
-                    ProductStrength.Visible = false;
-                    Label1.Visible = false;
-                }
-                else
-                {
-                    ProductStrength.Visible = true;
-                    Label1.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(ProductStrength.Text))
+                //{
+                //    ProductStrength.Visible = false;
+                //    Label1.Visible = false;
+                //}
+                //else
+                //{
+                //    ProductStrength.Visible = true;
+                //    Label1.Visible = true;
+                //}
 
-                if (String.IsNullOrWhiteSpace(dosage.Text))
-                {
-                    dosage.Visible = false;
-                    Label2.Visible = false;
-                }
-                else
-                {
-                    dosage.Visible = true;
-                    Label2.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(dosage.Text))
+                //{
+                //    dosage.Visible = false;
+                //    Label2.Visible = false;
+                //}
+                //else
+                //{
+                //    dosage.Visible = true;
+                //    Label2.Visible = true;
+                //}
 
-                if (String.IsNullOrWhiteSpace(packSize.Text))
-                {
-                    packSize.Visible = false;
-                    Label3.Visible = false;
-                }
-                else
-                {
-                    packSize.Visible = true;
-                    Label3.Visible = true;
-                }
+                //if (String.IsNullOrWhiteSpace(packSize.Text))
+                //{
+                //    packSize.Visible = false;
+                //    Label3.Visible = false;
+                //}
+                //else
+                //{
+                //    packSize.Visible = true;
+                //    Label3.Visible = true;
+                //}
             }
         }
 
