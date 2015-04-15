@@ -584,10 +584,10 @@ namespace IMS
 
                 ProductSet = null;
                 ProductSet = ds;
-                ds.Tables[0].Columns.Add("ProductInfo", typeof(string), "Product_Name+ ' '+itemStrength+' '+itemPackSize+' '+itemForm");
+               // ds.Tables[0].Columns.Add("ProductInfo", typeof(string), "Product_Name+ ' '+itemStrength+' '+itemPackSize+' '+itemForm");
                 
                 SelectProduct.DataSource = ds.Tables[0];
-                SelectProduct.DataTextField = "ProductInfo";
+                SelectProduct.DataTextField = "Description";
                 SelectProduct.DataValueField = "ProductID";
                 SelectProduct.DataBind();
                 if (SelectProduct != null)

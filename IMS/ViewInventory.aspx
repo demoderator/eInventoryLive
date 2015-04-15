@@ -87,23 +87,11 @@
                         </ItemTemplate>
                          <ItemStyle  Width="110px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                      <asp:TemplateField HeaderText="Product Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
+                     <asp:TemplateField Visible="true" HeaderText="Product Description" HeaderStyle-Width="330px">
                         <ItemTemplate>
-                            <asp:Label ID="ProductName2" padding-right="5px" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
-                            <asp:Label ID="Label1" padding-right="5px" runat="server" Text=" : "></asp:Label>
-                            <asp:Label ID="ProductStrength2" padding-right="5px" runat="server" Text='<%# Eval("strength") %>'  ></asp:Label>
-                            <asp:Label ID="Label2" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="dosage2"  runat="server" Text='<%# Eval("dosageForm") %>' padding-right="5px" ></asp:Label>
-                            <asp:Label ID="Label3" runat="server" Text=" : " padding-right="5px"></asp:Label>
-                            <asp:Label ID="packSize2" runat="server" Text='<%# Eval("PackageSize") %>' padding-right="5px" ></asp:Label>
+                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("prodDesc") %>' Width="330px"></asp:Label>
                         </ItemTemplate>
-                        
-                    </asp:TemplateField>
-                     <asp:TemplateField Visible="false" HeaderText="Name">
-                        <ItemTemplate>
-                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductName") %>' Width="150px"></asp:Label>
-                        </ItemTemplate>
-                         <ItemStyle  Width="150px" HorizontalAlign="Left"/>
+                         <ItemStyle  Width="330px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="Strength" Visible="false" HeaderStyle-Width ="125px">
                         <ItemTemplate>

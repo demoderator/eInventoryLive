@@ -26,9 +26,9 @@
                 AutoGenerateColumns="false" OnPageIndexChanging="StockDisplayGrid_PageIndexChanging" OnRowDataBound="StockDisplayGrid_RowDataBound">
                  <Columns>
 
-                     <asp:TemplateField HeaderText="Product Name" HeaderStyle-Width ="250px">
+                     <asp:TemplateField HeaderText="Product Description" HeaderStyle-Width ="250px">
                         <ItemTemplate>
-                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductName") %>' Width="250px"></asp:Label>
+                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Description") %>' Width="250px"></asp:Label>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
