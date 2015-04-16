@@ -74,9 +74,9 @@
 
                      <asp:TemplateField HeaderText="Edit">
                         <ItemTemplate>
-                            <asp:LinkButton ID="btnEdit" CssClass="btn btn-default"  Text="Edit" runat="server" CommandName="Edit" />
+                            <asp:LinkButton ID="btnEdit" CssClass="btn btn-default edit-btn"  Text="Edit" runat="server" CommandName="Edit" />
                             <span onclick="return confirm('Are you sure you want to delete this record?')">
-                                <asp:LinkButton ID="btnDelete" CssClass="btn btn-default"  Text="Delete" runat="server" CommandName="Delete"/>
+                                <asp:LinkButton ID="btnDelete" CssClass="btn btn-default del-btn"  Text="Delete" runat="server" CommandName="Delete"/>
                             </span>
                         </ItemTemplate>
 
@@ -93,4 +93,7 @@
                  </Columns>
              </asp:GridView>
     <asp:Button ID="btnBack" runat="server" CssClass="btn btn-primary btn-large" Text="Go Back" OnClick="btnBack_Click"/>
+
+
+
 </asp:Content>

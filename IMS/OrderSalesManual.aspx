@@ -5,57 +5,42 @@
      <h3>Manual Sale Order(s)</h3>
     <br />
     <br />
-    <div class="row">
 
-     <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtIvnoice" CssClass="col-md-2 control-label">Invoice No </asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtIvnoice" CssClass="form-control" />
-                <br />
-            </div>
-    </div>
-    
-     <div class="form-group">
-        <asp:Label runat="server" AssociatedControlID="StockAt" CssClass="col-md-2 control-label">Select Store </asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="StockAt" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="StockAt_SelectedIndexChanged"/>
-                <br/>
-            </div>
-    </div>
-   
-    <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtProduct" CssClass="col-md-2 control-label">Select Product</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtProduct" CssClass="form-control product"/>
-                <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click"  Height="35px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
-                <br />
-                <asp:DropDownList runat="server" ID="SelectProduct" Visible="false" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="SelectProduct_SelectedIndexChanged"/>
-                <br/>
-            </div>
-    </div>
+    <table cellspacing="5" cellpadding="5" border="0" width="100%">
 
-    <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="SelectQuantity" CssClass="col-md-2 control-label">Enter Quantity</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="SelectQuantity" CssClass="form-control" />
-                <br />
-            </div>
-    </div>
+        <tr>
+            <td><asp:Label runat="server" AssociatedControlID="txtIvnoice" CssClass="control-label">Invoice No </asp:Label></td>
+            <td><asp:TextBox runat="server" ID="txtIvnoice" CssClass="form-control" /></td>
+        
+            <td><asp:Label runat="server" AssociatedControlID="StockAt" CssClass="control-label">Select Store </asp:Label></td>
+            <td><asp:DropDownList runat="server" ID="StockAt" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="StockAt_SelectedIndexChanged"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label runat="server" AssociatedControlID="txtProduct" CssClass="control-label">Select Product</asp:Label></td>
+            <td><asp:TextBox runat="server" ID="txtProduct" CssClass="form-control product"/>
+                <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click"  Height="30px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
+                
+                <asp:DropDownList runat="server" ID="SelectProduct" Visible="false" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="SelectProduct_SelectedIndexChanged"/>
+                </td>
+            <td><asp:Label runat="server" AssociatedControlID="SelectQuantity" CssClass="control-label">Enter Quantity</asp:Label></td>
+            <td> <asp:TextBox runat="server" ID="SelectQuantity" CssClass="form-control" /></td>
+        </tr>
 
-    <div class="form-group">
-            <div class="col-md-10">
-                <br />
-            </div>
-    </div>
+        <tr>
+            <td></td>
+            <td colspan="100%">
 
-    <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-default" />
+                <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-primary" />
                 <asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="REFRESH" CssClass="btn btn-default" Visible="False" />
-                <asp:Button ID="btnCancelOrder" runat="server" OnClick="btnCancelOrder_Click" Text="GO BACK" CssClass="btn btn-primary btn-large" />
-            </div>
-        </div>
-    </div>
+                <asp:Button ID="btnCancelOrder" runat="server" OnClick="btnCancelOrder_Click" Text="GO BACK" CssClass="btn btn-default btn-large" />
+
+            </td>
+
+
+        </tr>
+
+    </table>
+
     
     <br />
     <br />
