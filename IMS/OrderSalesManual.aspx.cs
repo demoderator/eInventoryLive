@@ -23,6 +23,52 @@ namespace IMS
         {
             if (!IsPostBack)
             {
+                if (Session["OrderSalesDetail"] != null && Session["OrderSalesDetail"].Equals(true))
+                {
+                    FirstOrder = true;
+                    systemSet = new DataSet();
+                    ProductSet = new DataSet();
+                    LoadData();
+                    btnAccept.Visible = true;
+                    btnDecline.Visible = true;
+                    #region Populating System Types
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("Select * From tbl_System WHERE System_RoleID =2;", connection); // needs to be completed
+                        DataSet ds = new DataSet();
+                        SqlDataAdapter sA = new SqlDataAdapter(command);
+                        sA.Fill(ds);
+                        StockAt.DataSource = ds.Tables[0];
+                        StockAt.DataTextField = "SystemName";
+                        StockAt.DataValueField = "SystemID";
+                        StockAt.DataBind();
+                        if (StockAt != null)
+                        {
+                            StockAt.Items.Insert(0, "Select System");
+                            StockAt.SelectedIndex = int.Parse(Session["SelectedIndex"].ToString());
+                            StockAt.Enabled = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                    #endregion
+
+                    if (Session["Invoice"] != null)
+                    {
+                        txtIvnoice.Text = Session["Invoice"].ToString();
+                        txtIvnoice.Enabled = false;
+                    }
+                    BindGrid();
+                }
+                else
+                {
                     FirstOrder = false;
                     systemSet = new DataSet();
                     ProductSet = new DataSet();
@@ -54,8 +100,7 @@ namespace IMS
                     }
                     #endregion
                     LoadData();
-                
-
+                }
             }
         }
         private void LoadData()
@@ -92,7 +137,7 @@ namespace IMS
             #endregion
         }
 
-        private void UpdateStock(int orderDetailID, int quantity)
+        private void UpdateStockMinus(int orderDetailID, int quantity)
         {
             try
             {
@@ -156,6 +201,70 @@ namespace IMS
             }
         }
 
+        private void UpdateStockPlus(int orderDetailID, int quantity)
+        {
+            try
+            {
+                DataSet stockDet;
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_GetStockBy_OrderDetID", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_OrderDetailID", orderDetailID);
+                command.Parameters.AddWithValue("@p_StoredAt", int.Parse(Session["UserSys"].ToString()));
+
+                DataSet ds = new DataSet();
+                SqlDataAdapter dA = new SqlDataAdapter(command);
+                dA.Fill(ds);
+                stockDet = ds;
+                Dictionary<int, int> stockSet = new Dictionary<int, int>();
+
+                foreach (DataRow row in stockDet.Tables[0].Rows)
+                {
+                    int exQuan = int.Parse(row["Quantity"].ToString());
+                    if (quantity > 0)
+                    {
+                        if (exQuan >= quantity)
+                        {
+                            stockSet.Add(int.Parse(row["StockID"].ToString()), quantity);
+                            break;
+                        }
+                        else if (exQuan < quantity)
+                        {
+                            stockSet.Add(int.Parse(row["StockID"].ToString()), exQuan);
+                            quantity = quantity - exQuan;
+                        }
+                    }
+                }
+
+
+                foreach (int id in stockSet.Keys)
+                {
+                    command = new SqlCommand("Sp_UpdateStockBy_StockID", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_StockID", id);
+                    command.Parameters.AddWithValue("@p_quantity", stockSet[id]);
+                    command.Parameters.AddWithValue("@p_Action", "Plus");
+                    command.ExecuteNonQuery();
+
+                    #region Deletetion of Packing List
+                    /*command = new SqlCommand("sp_PackingListGeneration", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_StockID", id);
+                    command.Parameters.AddWithValue("@p_quantity", stockSet[id]);
+                    command.Parameters.AddWithValue("@p_OrderDetailID", orderDetailID);
+                    command.ExecuteNonQuery();*/
+                    #endregion
+                }
+
+            }
+            catch (Exception exp) { }
+            finally
+            {
+                connection.Close();
+                //Response.Redirect("Warehouse_StoreRequests.aspx");
+            }
+        }
+
         public DataSet GetSystems(int ID)
         {
             DataSet ds = new DataSet();
@@ -185,18 +294,18 @@ namespace IMS
         }
         protected void btnAccept_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ProductSet.Tables[0].Rows.Count; i++)
-            {
-                int  OderDetailID = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["OrderDetailID"].ToString());
-                int Quantity = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["Qauntity"].ToString());
+            //for (int i = 0; i < ProductSet.Tables[0].Rows.Count; i++)
+            //{
+            //    int  OderDetailID = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["OrderDetailID"].ToString());
+            //    int  Quantity = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["Qauntity"].ToString());
 
-                Session["RequestedNO"] = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["OrderID"].ToString());
+            //    Session["RequestedNO"] = Convert.ToInt32(ProductSet.Tables[0].Rows[i]["OrderID"].ToString());
 
-                UpdateStock(OderDetailID, Quantity);
-            }
+            //    UpdateStockMinus(OderDetailID, Quantity);
+            //}
 
-            btnPacking.Visible = true;
-            btnPrint.Visible = true;
+            Session["RequestedNO"] = Convert.ToInt32(ProductSet.Tables[0].Rows[0]["OrderID"].ToString());
+            Response.Redirect("ViewPackingList_SO.aspx", false);
             //Response.Redirect("PO_GENERATE.aspx", false);
         }
 
@@ -278,6 +387,18 @@ namespace IMS
 
                     command.ExecuteNonQuery();
                 }
+                else if (e.CommandName.Equals("Details"))
+                {
+                    int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument.ToString())].FindControl("OrderDetailNo")).Text);
+                    int ProductID = int.Parse(((Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument.ToString())].FindControl("lblProductID")).Text);
+                    int quan = int.Parse(((Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument.ToString())].FindControl("lblQuantity")).Text);
+                    Session["OderDetailID"] = orderDetID;
+                    Session["ProductID"] = ProductID;
+                    Session["TotalQuantity"] = quan;
+                    Session["SelectedIndex"] = StockAt.SelectedIndex;
+                    Session["Invoice"] = txtIvnoice.Text;
+                    Response.Redirect("OrderSalesManual_Details.aspx");
+                }
             }
             catch (Exception exp) { }
             finally
@@ -321,146 +442,83 @@ namespace IMS
 
             btnAccept.Visible = true;
             btnDecline.Visible = true;
-            if (FirstOrder.Equals(false))
+            int RemainingStock = 0;
+            try
             {
-                #region Creating Order
-
-                int pRequestFrom = 0;
-                int pRequestTo = 0;
-                String OrderMode = "";
-                int OrderType = 3;//incase of vendor this should be 3
-
-                OrderMode = "Sales";
-
-                String Invoice = txtIvnoice.Text;
-                String Vendor = "True";
-
-
-                try
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand("sp_CreateOrder", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    //sets vendor
-                    if (int.TryParse(StockAt.SelectedValue.ToString(), out pRequestTo))
-                    {
-                        command.Parameters.AddWithValue("@p_RequestTO", pRequestTo);
-                    }
-                    //sets warehouse/store
-                    if (int.TryParse(Session["UserSys"].ToString(), out pRequestFrom))
-                    {
-                        command.Parameters.AddWithValue("@p_RequestFrom", pRequestFrom);
-                    }
-
-                    command.Parameters.AddWithValue("@p_OrderType", OrderType);
-                    command.Parameters.AddWithValue("@p_Invoice", Invoice);
-                    command.Parameters.AddWithValue("@p_OrderMode", OrderMode);
-                    command.Parameters.AddWithValue("@p_Vendor", Vendor);
-                    command.Parameters.AddWithValue("@p_orderStatus", "Pending");
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter dA = new SqlDataAdapter(command);
-                    dA.Fill(dt);
-                    if (dt.Rows.Count != 0)
-                    {
-                        Session["OrderNumber"] = dt.Rows[0][0].ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-                finally
-                {
-                    connection.Close();
-                }
-                #endregion
-
-                #region Linking to Order Detail table
-
-                try
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByOutStore", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    int OrderNumber, ProductNumber, Quantity = 0;
-
-                    if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
-                    {
-                        command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
-                    }
-                    if (int.TryParse(SelectProduct.SelectedValue.ToString(), out ProductNumber))
-                    {
-                        command.Parameters.AddWithValue("@p_ProductID", ProductNumber);
-                    }
-                    if (int.TryParse(SelectQuantity.Text.ToString(), out Quantity))
-                    {
-                        command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
-                    }
-
-
-                    command.Parameters.AddWithValue("@p_status", "Pending");
-                    command.Parameters.AddWithValue("@p_comments", "Generated to Outside Store");
-
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-
-                }
-                finally
-                {
-                    connection.Close();
-                }
-                #endregion
-                FirstOrder = true;
+                connection.Open();
+                SqlCommand command = new SqlCommand("sp_getStock_Quantity", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_ProductID", Convert.ToInt32(SelectProduct.SelectedValue.ToString()));
+                DataSet QuantitySet = new DataSet();
+                SqlDataAdapter sA = new SqlDataAdapter(command);
+                sA.Fill(QuantitySet);
+                RemainingStock = Convert.ToInt32(QuantitySet.Tables[0].Rows[0][0].ToString());
             }
-            else
+            catch(Exception ex)
             {
-                #region Product Existing in the Current Order
-                DataSet ds = new DataSet();
-                try
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            if (Convert.ToInt32(SelectQuantity.Text) <= RemainingStock)
+            {
+                if (FirstOrder.Equals(false))
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand("sp_GetOrderbyVendor", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    int OrderNumber = 0;
+                    #region Creating Order
+
+                    int pRequestFrom = 0;
+                    int pRequestTo = 0;
+                    String OrderMode = "";
+                    int OrderType = 3;//incase of vendor this should be 3
+
+                    OrderMode = "Sales";
+
+                    String Invoice = txtIvnoice.Text;
+                    String Vendor = "True";
 
 
-                    if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
+                    try
                     {
-                        command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("sp_CreateOrder", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        //sets vendor
+                        if (int.TryParse(StockAt.SelectedValue.ToString(), out pRequestTo))
+                        {
+                            command.Parameters.AddWithValue("@p_RequestTO", pRequestTo);
+                        }
+                        //sets warehouse/store
+                        if (int.TryParse(Session["UserSys"].ToString(), out pRequestFrom))
+                        {
+                            command.Parameters.AddWithValue("@p_RequestFrom", pRequestFrom);
+                        }
+
+                        command.Parameters.AddWithValue("@p_OrderType", OrderType);
+                        command.Parameters.AddWithValue("@p_Invoice", Invoice);
+                        command.Parameters.AddWithValue("@p_OrderMode", OrderMode);
+                        command.Parameters.AddWithValue("@p_Vendor", Vendor);
+                        command.Parameters.AddWithValue("@p_orderStatus", "Pending");
+                        DataTable dt = new DataTable();
+                        SqlDataAdapter dA = new SqlDataAdapter(command);
+                        dA.Fill(dt);
+                        if (dt.Rows.Count != 0)
+                        {
+                            Session["OrderNumber"] = dt.Rows[0][0].ToString();
+                        }
                     }
-                    SqlDataAdapter sA = new SqlDataAdapter(command);
-                    sA.Fill(ds);
-                }
-                catch (Exception ex)
-                {
-
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-                int ProductNO = 0;
-                bool ProductPresent = false;
-                if (int.TryParse(SelectProduct.SelectedValue.ToString(), out ProductNO))
-                {
-                }
-
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    if (Convert.ToInt32(ds.Tables[0].Rows[i]["ProductID"]).Equals(ProductNO))
+                    catch (Exception ex)
                     {
-                        ProductPresent = true;
-                        break;
-                    }
-                }
-                #endregion
 
-                if (ProductPresent.Equals(false))
-                {
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                    #endregion
+
                     #region Linking to Order Detail table
 
                     try
@@ -487,8 +545,13 @@ namespace IMS
 
                         command.Parameters.AddWithValue("@p_status", "Pending");
                         command.Parameters.AddWithValue("@p_comments", "Generated to Outside Store");
-
-                        command.ExecuteNonQuery();
+                        DataSet LinkResult = new DataSet();
+                        SqlDataAdapter sA = new SqlDataAdapter(command);
+                        sA.Fill(LinkResult);
+                        if (LinkResult != null && LinkResult.Tables[0] != null)
+                        {
+                            Session["DetailID"] = LinkResult.Tables[0].Rows[0][0];
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -499,24 +562,130 @@ namespace IMS
                         connection.Close();
                     }
                     #endregion
+
+                    FirstOrder = true;
                 }
                 else
                 {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record can not be inserted, because it is already present')", true);
+                    #region Product Existing in the Current Order
+                    DataSet ds = new DataSet();
+                    try
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("sp_GetOrderbyOutside", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        int OrderNumber = 0;
+
+
+                        if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
+                        {
+                            command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
+                        }
+                        SqlDataAdapter sA = new SqlDataAdapter(command);
+                        sA.Fill(ds);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                    int ProductNO = 0;
+                    bool ProductPresent = false;
+                    if (int.TryParse(SelectProduct.SelectedValue.ToString(), out ProductNO))
+                    {
+                    }
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(ds.Tables[0].Rows[i]["ProductID"]).Equals(ProductNO))
+                        {
+                            ProductPresent = true;
+                            break;
+                        }
+                    }
+                    #endregion
+
+                    if (ProductPresent.Equals(false))
+                    {
+                        #region Linking to Order Detail table
+
+                        try
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByOutStore", connection);
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            int OrderNumber, ProductNumber, Quantity = 0;
+
+                            if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
+                            {
+                                command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
+                            }
+                            if (int.TryParse(SelectProduct.SelectedValue.ToString(), out ProductNumber))
+                            {
+                                command.Parameters.AddWithValue("@p_ProductID", ProductNumber);
+                            }
+                            if (int.TryParse(SelectQuantity.Text.ToString(), out Quantity))
+                            {
+                                command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
+                            }
+
+
+                            command.Parameters.AddWithValue("@p_status", "Pending");
+                            command.Parameters.AddWithValue("@p_comments", "Generated to Outside Store");
+
+                            DataSet LinkResult = new DataSet();
+                            SqlDataAdapter sA = new SqlDataAdapter(command);
+                            sA.Fill(LinkResult);
+                            if (LinkResult != null && LinkResult.Tables[0] != null)
+                            {
+                                Session["DetailID"] = LinkResult.Tables[0].Rows[0][0];
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        finally
+                        {
+                            connection.Close();
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record can not be inserted, because it is already present')", true);
+                    }
                 }
             }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Remaining Stock is less then the entered quantity, please enter less quantity to proceed')", true);
+            }
+
+            // needs to check this //
             #region Populate Product Info
             try
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand("Sp_FillPO_Details", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                int OrderNumber = 0;
+                int OrderNumber,DetailID = 0;
                 if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                 {
                     command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
-                    command.ExecuteNonQuery();
+                    //command.ExecuteNonQuery();
                 }
+                if (int.TryParse(Session["DetailID"].ToString(), out DetailID))
+                {
+                    command.Parameters.AddWithValue("@p_OrderDetailID", DetailID);
+                   
+                }
+                command.ExecuteNonQuery();
 
 
             }
@@ -529,6 +698,7 @@ namespace IMS
                 connection.Close();
             }
             #endregion
+
             BindGrid();
             txtProduct.Text = "";
             SelectProduct.Visible = false;
@@ -591,18 +761,54 @@ namespace IMS
 
         protected void btnCancelOrder_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["OrderNumber"] != null)
+                {
+                    int orderID = int.Parse(Session["OrderNumber"].ToString());
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("sp_DeleteOrder", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_OrderID", orderID);
+                    command.ExecuteNonQuery();
+                }
+                Session["OrderNumber"] = null;
+                Session["FromViewPlacedOrders"] = "false";
+                txtProduct.Text = "";
+                SelectProduct.Visible = false;
+                StockAt.Enabled = true;
+                StockDisplayGrid.DataSource = null;
+                StockDisplayGrid.DataBind();
+                SelectQuantity.Text = "";
+                SelectProduct.SelectedIndex = -1;
+                StockAt.SelectedIndex = -1;
+                btnAccept.Visible = false;
+                btnDecline.Visible = false;
+                FirstOrder = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
             //must be checked for sessions
-            if (Session["FromViewPlacedOrders"].ToString().Equals("true") && Session["FromViewPlacedOrders"].ToString() != null && Session["FromViewPlacedOrders"] != null)
+            if (Session["OrderSalesDetail"].Equals(true) && Session["OrderSalesDetail"].ToString() != null && Session["OrderSalesDetail"] != null)
             {
                 Session["OrderNumber"] = "";
-                Session["FromViewPlacedOrders"] = "false";
-                Response.Redirect("ViewPlacedOrders.aspx", false);
+                Session["OrderSalesDetail"] = false;
+                Response.Redirect("ViewSalesOrders.aspx", false); //must be rechecked
             }
             else
             {
                 Session["OrderNumber"] = "";
-                Session["FromViewPlacedOrders"] = "false";
-                Response.Redirect("PlaceOrder.aspx", false);
+                Session["OrderSalesDetail"] = false;
+                Response.Redirect("ManageOrders.aspx", false);
             }
         }
 
