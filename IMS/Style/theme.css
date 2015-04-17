@@ -1172,3 +1172,7 @@ ul.actions li.firstli{
 .putScroll {
     overflow-x:auto;
 }
+
+table.table-striped tr td .control-label {
+    text-align:left;
+}
