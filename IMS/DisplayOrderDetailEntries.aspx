@@ -13,7 +13,7 @@
     <table Width="80%">
         <tr>
             <td><b>Order ID</b></td>
-            <td> <asp:Label runat="server" Visible="false" ID="lblOMISD" CssClass="form-control" /></td>
+            <td> <asp:Label runat="server" ID="lblOMISD" CssClass="form-control" /></td>
             <td><b>Product Name</b></td>
             <td><asp:Label ID="ProdName" runat="server" CssClass="form-control"></asp:Label></td>
             
@@ -190,7 +190,7 @@
                             <asp:Label ID="lblExpDate" runat="server" Text='<%# Eval("ExpiryDate")==DBNull.Value?"":Convert.ToDateTime( Eval("ExpiryDate")).ToString("MMM dd ,yyyy") %>'></asp:Label>
                         </ItemTemplate>
                           <EditItemTemplate>
-                             <asp:TextBox ID="txtExpDate"  runat="server" Text='<%# Eval("ExpiryDate")==DBNull.Value?"":Convert.ToDateTime( Eval("ExpiryDate")).ToString("MMM dd ,yyyy") %>' Width="90px"></asp:TextBox>
+                             <asp:TextBox ID="txtExpDate"  runat="server" Text='<%# Eval("ExpiryDate")==DBNull.Value?"":Convert.ToDateTime( Eval("ExpiryDate")).ToString("MMM dd ,yyyy") %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
                             <asp:TextBox ID="txtAddExpDate" runat="server"></asp:TextBox>
@@ -202,7 +202,7 @@
                             <asp:Label ID="lblBatch" runat="server" Text='<%# Eval("BatchNumber") %>' ></asp:Label>
                         </ItemTemplate>
                           <EditItemTemplate>
-                             <asp:TextBox ID="txtBatch"  runat="server" Text='<%# Eval("BatchNumber") %>' Width="80px"></asp:TextBox>
+                             <asp:TextBox ID="txtBatch"  runat="server" Text='<%# Eval("BatchNumber") %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
                             <asp:TextBox ID="txtAddBatch" runat="server"></asp:TextBox>

@@ -184,15 +184,16 @@ namespace IMS
                         return;
                     }
 
-                    if (recQuan > remQuan)
+                    if (recQuan > remQuan||defQuan >remQuan || expQuan >remQuan || retQuan>remQuan)
                     {
-                        WebMessageBoxUtil.Show("Your remaining quantity cannot be larger than " + remQuan);
+                        WebMessageBoxUtil.Show("Entered Quantity cannout exceed remaining quantity " + remQuan);
                         StockDisplayGrid.EditIndex = -1;
                         BindGrid();
                         return;
                     }
                     else
                     {
+                        
                         remQuan = remQuan - (recQuan + expQuan + defQuan+retQuan);
 
                     }
@@ -213,6 +214,7 @@ namespace IMS
                         return;
                     }
                     #endregion
+
                     #region barcode generation
                     long newBarcode = 0;
                    
@@ -401,12 +403,17 @@ namespace IMS
                         return;
                     }
 
-                    if (recQuan > remQuan)
+                    if (recQuan > remQuan || defQuan > remQuan || expQuan > remQuan || retQuan > remQuan)
                     {
+                       
+                  
                         if (recQuan == recQuanOrg) { }
+                        else if (defQuan == defQuanOrg) { }
+                        else if(expQuan == expQuanOrg){}
+                        else if(retQuan == retQuanOrg){}
                         else
                         {
-                            WebMessageBoxUtil.Show("Your remaining quantity cannot be larger than " + remQuan);
+                            WebMessageBoxUtil.Show("Entered Quantity cannout exceed remaining quantity " + remQuan);
                             StockDisplayGrid.EditIndex = -1;
                             BindGrid();
                             return;
