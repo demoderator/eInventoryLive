@@ -10,44 +10,42 @@
 
           </script>--%>
       <h3> Order Detail Entries</h3> 
-    <table Width="100%">
+    <table Width="80%">
         <tr>
+            <td><b>Order ID</b></td>
+            <td> <asp:Label runat="server" Visible="false" ID="lblOMISD" CssClass="form-control" /></td>
             <td><b>Product Name</b></td>
             <td><asp:Label ID="ProdName" runat="server" CssClass="form-control"></asp:Label></td>
             
         </tr>
          <tr>
             <td><b>Ordered Quantity</b></td>
-            <td><asp:Label runat="server" ID="Label1" CssClass="form-control" /></td>
-            <td><b>Received Quantity</b></td>
-            <td> <asp:Label runat="server" ID="Label2" CssClass="form-control" /></td>
+            <td><asp:Label runat="server" ID="OrdQuantity" CssClass="form-control" /></td>
+             <td><b>Remaining Quantity</b></td>
+            <td><asp:Label runat="server" ID="RemQuantity" CssClass="form-control" /></td>
+           
+        </tr>
+        <tr>
+             <td><b>Received Quantity</b></td>
+            <td> <asp:Label runat="server" ID="RecQuantity" CssClass="form-control" /></td>
+            <td><b>Bonus Quantity</b></td>
+            <td><asp:Label runat="server" ID="bonusQuanOrg" CssClass="form-control" /></td>
+        </tr>
+        <tr>
+           <td><b>Defected Quantity</b></td>
+            <td> <asp:Label runat="server" ID="defQuantity" CssClass="form-control" /></td>
+            <td><b>Expired Quantity</b></td>
+            <td> <asp:Label runat="server" ID="expQuantity" CssClass="form-control" /></td>
         </tr>
         <tr>
             <td><b>Returned Quantity</b></td>
             <td><asp:Label runat="server" ID="retQuantity" CssClass="form-control" /></td>
-            <td><b>Expired Quantity</b></td>
-            <td> <asp:Label runat="server" ID="expQuantity" CssClass="form-control" /></td>
+            
         </tr>
     </table>
    
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="retQuantity"  CssClass="col-md-2 control-label">Returned Quantity</asp:Label>
-            <div class="col-md-10">
-                
-                 <br />
-            </div>
-            
-    </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="expQuantity"  CssClass="col-md-2 control-label">Expired Quantity</asp:Label>
-            <div class="col-md-10">
-                
-                 <br />
-            </div>
-            
-    </div>
-        <asp:Label runat="server" Visible="false" ID="lblOMISD" CssClass="form-control" />
+       
+       
         <asp:Label runat="server" Visible="false" ID="lblPO" CssClass="form-control" />
         <asp:Label runat="server" Visible="false" ID="lblBarSerial" CssClass="form-control" />
         <asp:Label runat="server" Visible="false" ID="lblOrderDetID" CssClass="form-control" />

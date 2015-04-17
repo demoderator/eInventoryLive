@@ -138,6 +138,7 @@ namespace IMS
                 int barSerial=int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblBrSerial")).Text);
                 int OrderedMasterID=int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblOrdMs_id")).Text);
                 int ProdID=int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblProd_id")).Text);
+                String prodDescription = ((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("ProductName2")).Text;
                 Session["ordetailID"]=ordetID;
                 Session["ordQuan"] = orderedQuantity;
                 Session["bonusQuan"] = bonusOrg;
@@ -150,6 +151,7 @@ namespace IMS
                 Session["OMID"] = OrderedMasterID;
                 Session["isPO"] = "TRUE";
                 Session["ProdID"] = ProdID;
+                Session["ProdDesc"] = prodDescription;
                 Response.Redirect("DisplayOrderDetailEntries.aspx" ,false);
             }
             else 

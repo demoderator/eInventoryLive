@@ -29,7 +29,7 @@ namespace IMS
         {
             if (onLoad)
             {
-                ProdName.Text = Session["RequestedNO"].ToString();
+                ProdName.Text = Session["ProdDesc"].ToString();
                 lblOrderDetID.Text = Session["ordetailID"].ToString();
                 OrdQuantity.Text = Session["ordQuan"].ToString();
                 bonusQuanOrg.Text = Session["bonusQuan"].ToString();

@@ -13,6 +13,15 @@ namespace IMS {
     public partial class DisplayOrderDetailEntries {
         
         /// <summary>
+        /// lblOMISD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOMISD;
+        
+        /// <summary>
         /// ProdName control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace IMS {
         protected global::System.Web.UI.WebControls.Label OrdQuantity;
         
         /// <summary>
+        /// RemQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RemQuantity;
+        
+        /// <summary>
         /// RecQuantity control.
         /// </summary>
         /// <remarks>
@@ -47,15 +65,6 @@ namespace IMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label bonusQuanOrg;
-        
-        /// <summary>
-        /// RemQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RemQuantity;
         
         /// <summary>
         /// defQuantity control.
@@ -83,15 +92,6 @@ namespace IMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label retQuantity;
-        
-        /// <summary>
-        /// lblOMISD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOMISD;
         
         /// <summary>
         /// lblPO control.
