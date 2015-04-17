@@ -18,9 +18,9 @@
                <b>Receipt Number :</b>
             </td>
             <td>
-                <div class="col-md-10">
-                    <asp:Label runat="server" ID="ReceiptNum" CssClass="col-md-2 control-label"/>
-                </div>
+                
+                    <asp:Label runat="server" ID="ReceiptNum" CssClass="control-label"/>
+                
 
             </td>
             </tr>
@@ -34,8 +34,8 @@
                  <Columns>
                       <asp:TemplateField HeaderText="Action" HeaderStyle-Width ="200px">
                         <ItemTemplate>
-                            <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Accept" runat="server" CommandName="Edit" Enabled= '<%# IsStatusNotComplete((String) Eval("Status")) %>' Visible= '<%# IsStatusNotComplete((String) Eval("Status")) %>'/>
-                            <asp:Button CssClass="btn btn-default" ID="btnView" Text="View" runat="server" CommandName="ViewEntry" Visible= '<%# IsStatusComplete((String) Eval("Status")) %>'/>
+                            <asp:Button CssClass="btn btn-default edit-btn" ID="btnEdit" Text="Accept" runat="server" CommandName="Edit" Enabled= '<%# IsStatusNotComplete((String) Eval("Status")) %>' Visible= '<%# IsStatusNotComplete((String) Eval("Status")) %>'/>
+                            <asp:Button CssClass="btn btn-default " ID="btnView" Text="View" runat="server" CommandName="ViewEntry" Visible= '<%# IsStatusComplete((String) Eval("Status")) %>'/>
                              <%--CommandArgument='<%# Container.DisplayIndex  %>'--%>
                         </ItemTemplate>
                         <EditItemTemplate>

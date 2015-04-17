@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DisplayOrderDetailEntries.aspx.cs" Inherits="IMS.DisplayOrderDetailEntries" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 157px;
+        }
+        .auto-style2 {
+            width: 326px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
      <%--<script src="Scripts/jquery.js"  type="text/javascript"></script>
@@ -10,37 +18,41 @@
 
           </script>--%>
       <h3> Order Detail Entries</h3> 
-    <table Width="80%">
+    <table Width="100%" class="formTbl">
         <tr>
             <td><b>Order ID</b></td>
-            <td> <asp:Label runat="server" ID="lblOMISD" CssClass="form-control" /></td>
-            <td><b>Product Name</b></td>
-            <td><asp:Label ID="ProdName" runat="server" CssClass="form-control"></asp:Label></td>
+            <td><asp:Label runat="server" ID="lblOMISD" CssClass="" /></td>
+            <td class="auto-style1"></td>
+            <td class="auto-style2"><b>Product Name</b></td>
+            <td><asp:Label ID="ProdName" runat="server" CssClass=""></asp:Label></td>
             
         </tr>
          <tr>
             <td><b>Ordered Quantity</b></td>
-            <td><asp:Label runat="server" ID="OrdQuantity" CssClass="form-control" /></td>
-             <td><b>Remaining Quantity</b></td>
-            <td><asp:Label runat="server" ID="RemQuantity" CssClass="form-control" /></td>
+            <td><asp:Label runat="server" ID="OrdQuantity" CssClass="" /></td>
+             <td class="auto-style1"></td>
+             <td class="auto-style2"><b>Remaining Quantity</b></td>
+            <td><asp:Label runat="server" ID="RemQuantity" CssClass="" /></td>
            
         </tr>
         <tr>
              <td><b>Received Quantity</b></td>
-            <td> <asp:Label runat="server" ID="RecQuantity" CssClass="form-control" /></td>
-            <td><b>Bonus Quantity</b></td>
-            <td><asp:Label runat="server" ID="bonusQuanOrg" CssClass="form-control" /></td>
+            <td> <asp:Label runat="server" ID="RecQuantity" CssClass="" /></td>
+            <td class="auto-style1"></td>
+            <td class="auto-style2"><b>Bonus Quantity</b></td>
+            <td><asp:Label runat="server" ID="bonusQuanOrg" CssClass="" /></td>
         </tr>
         <tr>
            <td><b>Defected Quantity</b></td>
-            <td> <asp:Label runat="server" ID="defQuantity" CssClass="form-control" /></td>
-            <td><b>Expired Quantity</b></td>
-            <td> <asp:Label runat="server" ID="expQuantity" CssClass="form-control" /></td>
+            <td> <asp:Label runat="server" ID="defQuantity" CssClass="" /></td>
+            <td class="auto-style1">&nbsp; &nbsp; &nbsp;</td>
+            <td class="auto-style2"><b>Expired Quantity</b></td>
+            <td> <asp:Label runat="server" ID="expQuantity" CssClass="" /></td>
         </tr>
         <tr>
             <td><b>Returned Quantity</b></td>
-            <td><asp:Label runat="server" ID="retQuantity" CssClass="form-control" /></td>
-            
+            <td><asp:Label runat="server" ID="retQuantity" CssClass="" /></td>
+            <td colspan="100%"></td>
         </tr>
     </table>
    
@@ -69,8 +81,8 @@
                  <Columns>
                       <asp:TemplateField HeaderText="Action" HeaderStyle-Width ="150px">
                         <ItemTemplate>
-                            <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" CommandName="Edit" />
-                             <asp:Button CssClass="btn btn-default" ID="btnDelete" Text="Delete" runat="server" CommandName="Delete" />
+                            <asp:Button CssClass="btn btn-default edit-btn" ID="btnEdit" Text="Edit" runat="server" CommandName="Edit" />
+                             <asp:Button CssClass="btn btn-default del-btn" ID="btnDelete" Text="Delete" runat="server" CommandName="Delete" />
                              <%--CommandArgument='<%# Container.DisplayIndex  %>'--%>
                         </ItemTemplate>
                         <EditItemTemplate>
