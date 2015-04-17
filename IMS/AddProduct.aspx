@@ -16,204 +16,96 @@
      </div>
      <br />
      <br />
-     <div class="form-horizontal">
+     
          <br />
         <h4>Add Product</h4>
         <hr />
         
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="BarCodeSerial" CssClass="col-md-2 control-label">BarCode Serial</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="BarCodeSerial" CssClass="form-control" Enabled="false" />
-                <br />
-            </div>
-        </div>
 
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="GreenRainCode" CssClass="col-md-2 control-label">GreenRain Code</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="GreenRainCode" CssClass="form-control" />
-                </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductName" CssClass="col-md-2 control-label">Product Name</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductName" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProductName" CssClass="text-danger" ErrorMessage="The product name field is required." ValidationGroup="exSave"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProdcutDesc" CssClass="col-md-2 control-label">Product Description</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProdcutDesc" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProdcutBrand" CssClass="col-md-2 control-label">Product Brand</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProdcutBrand" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductType" CssClass="col-md-2 control-label">Product Type</asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="ProductType" CssClass="form-control" Width="29%"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProductType" CssClass="text-danger" ErrorMessage="The product type field is required." ValidationGroup="exSave"/>
-            </div>
-        </div>    
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductDept" CssClass="col-md-2 control-label">Product Department</asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="ProductDept" CssClass="form-control" Width="29%" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ProductDept_SelectedIndexChanged"/>
-                <br />
-
-            </div>
-        </div>  
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductCat" CssClass="col-md-2 control-label">Product Category</asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="ProductCat" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="ProductCat_SelectedIndexChanged" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductSubCat" CssClass="col-md-2 control-label">Product SubCategory</asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="ProductSubCat" CssClass="form-control" Width="29%"/>
-                <br />
-            </div>
-        </div>
-
-         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ddlProductOrderType" CssClass="col-md-2 control-label">Product Order Type</asp:Label>
-            <div class="col-md-10">
-                <asp:DropDownList runat="server" ID="ddlProductOrderType" CssClass="form-control" Width="29%"/>
-                <br />
-            </div>
-        </div>
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductCost" CssClass="col-md-2 control-label">Unit Cost Price</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductCost" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductSale" CssClass="col-md-2 control-label">Unit Sale Price</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductSale" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="WholeSalePrice" CssClass="col-md-2 control-label">WholeSale Price</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="WholeSalePrice" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductDiscount" CssClass="col-md-2 control-label">Maximum Discount</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductDiscount" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-        
-         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ItemForm" CssClass="col-md-2 control-label">Product Form</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ItemForm" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ItemStrength" CssClass="col-md-2 control-label">Product Strength</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ItemStrength" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="PackType" CssClass="col-md-2 control-label">Pack Type</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="PackType" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-        
-         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="PackSize" CssClass="col-md-2 control-label">Pack Size</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="PackSize" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="shelfNumber" CssClass="col-md-2 control-label">Shelf Number</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="shelfNumber" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="rackNumber" CssClass="col-md-2 control-label">Rack Number</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="rackNumber" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="binNumber" CssClass="col-md-2 control-label">Bin Number</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="binNumber" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="bonus12" CssClass="col-md-2 control-label">Bonus Quantity 12</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="bonus12" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="bonus25" CssClass="col-md-2 control-label">Bonus Quantity 25</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="bonus25" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-          <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="bonus50" CssClass="col-md-2 control-label">Bonus Quantity 50</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="bonus50" CssClass="form-control" />
-                <br />
-            </div>
-        </div> 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <asp:Button ID="btnCreateProduct" runat="server" OnClick="btnCreateProduct_Click"  Text="ADD" CssClass="btn btn-default" ValidationGroup="exSave"/>
-                <asp:Button ID="btnCancelProduct" runat="server" OnClick="btnCancelProduct_Click" Text="CANCEL" CssClass="btn btn-default" />
-                <asp:Button ID="btnGoBack" runat="server" CssClass="btn btn-primary btn-large" Text="Go Back" OnClick="btnGoBack_Click"/>
-            </div>
-        </div>
-    </div>
+         <table cellspacing="0" cellpadding="5" border="0" width="100%">
+             <tr>
+                 <td>
+                <asp:Label runat="server" AssociatedControlID="BarCodeSerial" CssClass="control-label">BarCode Serial</asp:Label>
+                 </td>
+                 <td><asp:TextBox runat="server" ID="BarCodeSerial" CssClass="form-control" Enabled="false" />
+                 </td>
+                 <td><asp:Label runat="server" AssociatedControlID="GreenRainCode" CssClass="control-label">GreenRain Code</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="GreenRainCode" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td> <asp:Label runat="server" AssociatedControlID="ProductName" CssClass="control-label">Product Name</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="ProductName" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProductName" CssClass="text-danger" ErrorMessage="The product name field is required." ValidationGroup="exSave"/></td>
+                <td> <asp:Label runat="server" AssociatedControlID="ProdcutDesc" CssClass=" control-label">Product Description</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="ProdcutDesc" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+             <td><asp:Label runat="server" AssociatedControlID="ProdcutBrand" CssClass=" control-label">Product Brand</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="ProdcutBrand" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductType" CssClass="control-label">Product Type</asp:Label></td>
+                 <td>        <asp:DropDownList runat="server" ID="ProductType" CssClass="form-control" Width="29%"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProductType" CssClass="text-danger" ErrorMessage="The product type field is required." ValidationGroup="exSave"/></td>
+              
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductDept" CssClass=" control-label">Product Department</asp:Label></td>
+                 <td><asp:DropDownList runat="server" ID="ProductDept" CssClass="form-control" Width="29%" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ProductDept_SelectedIndexChanged"/></td>
+            <td><asp:Label runat="server" AssociatedControlID="ProductCat" CssClass=" control-label">Product Category</asp:Label></td>
+                 <td><asp:DropDownList runat="server" ID="ProductCat" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="ProductCat_SelectedIndexChanged" /></td>
+                  </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductSubCat" CssClass="control-label">Product SubCategory</asp:Label></td>
+                 <td><asp:DropDownList runat="server" ID="ProductSubCat" CssClass="form-control" Width="29%"/></td>
+                 <td><asp:Label runat="server" AssociatedControlID="ddlProductOrderType" CssClass=" control-label">Product Order Type</asp:Label></td>
+                 <td><asp:DropDownList runat="server" ID="ddlProductOrderType" CssClass="form-control" Width="29%"/></td>
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductCost" CssClass=" control-label">Unit Cost Price</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="ProductCost" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductSale" CssClass=" control-label">Unit Sale Price</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="ProductSale" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="WholeSalePrice" CssClass=" control-label">WholeSale Price</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="WholeSalePrice" CssClass="form-control" /></td>
+                 <td> <asp:Label runat="server" AssociatedControlID="ProductDiscount" CssClass=" control-label">Maximum Discount</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="ProductDiscount" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="ItemForm" CssClass="control-label">Product Form</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="ItemForm" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="ItemStrength" CssClass=" control-label">Product Strength</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="ItemStrength" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="PackType" CssClass=" control-label">Pack Type</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="PackType" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="PackSize" CssClass=" control-label">Pack Size</asp:Label></td>
+                 <td>  <asp:TextBox runat="server" ID="PackSize" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td><asp:Label runat="server" AssociatedControlID="shelfNumber" CssClass=" control-label">Shelf Number</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="shelfNumber" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="rackNumber" CssClass=" control-label">Rack Number</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="rackNumber" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td> <asp:Label runat="server" AssociatedControlID="binNumber" CssClass=" control-label">Bin Number</asp:Label></td>
+                 <td>   <asp:TextBox runat="server" ID="binNumber" CssClass="form-control" /></td>
+                <td> <asp:Label runat="server" AssociatedControlID="bonus12" CssClass="col-md-2 control-label">Bonus Quantity 12</asp:Label></td>
+                 <td><asp:TextBox runat="server" ID="bonus12" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td>  <asp:Label runat="server" AssociatedControlID="bonus25" CssClass="col-md-2 control-label">Bonus Quantity 25</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="bonus25" CssClass="form-control" /></td>
+                 <td><asp:Label runat="server" AssociatedControlID="bonus50" CssClass="col-md-2 control-label">Bonus Quantity 50</asp:Label></td>
+                 <td> <asp:TextBox runat="server" ID="bonus50" CssClass="form-control" /></td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td colspan="100%"><asp:Button ID="btnCreateProduct" runat="server" OnClick="btnCreateProduct_Click"  Text="ADD" CssClass="btn btn-default" ValidationGroup="exSave"/>
+                 <asp:Button ID="btnCancelProduct" runat="server" OnClick="btnCancelProduct_Click" Text="CANCEL" CssClass="btn btn-default" />
+                 <asp:Button ID="btnGoBack" runat="server" CssClass="btn btn-primary btn-large" Text="Go Back" OnClick="btnGoBack_Click"/></td>
+             </tr>
+                </table>
 </asp:Content>

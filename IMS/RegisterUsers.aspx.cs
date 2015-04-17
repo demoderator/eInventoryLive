@@ -98,6 +98,8 @@ namespace IMS
                 command.Parameters.AddWithValue("@p_SystemID", ddlSysID.SelectedValue.ToString());
                 command.Parameters.AddWithValue("@p_FirstName", fName.Text);
                 command.Parameters.AddWithValue("@p_LastName", lstName.Text);
+                command.Parameters.AddWithValue("@p_Contact", Address.Text);
+                command.Parameters.AddWithValue("@p_Address", ContactNo.Text);
 
                 command.Parameters.AddWithValue("@p_Name", "");
                 command.Parameters.AddWithValue("@p_DisplayName", "");
