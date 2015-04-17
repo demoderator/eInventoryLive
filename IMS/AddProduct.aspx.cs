@@ -98,7 +98,8 @@ namespace IMS
                                     Session["MS_Category"].ToString(), Session["MS_GenericName"].ToString(), Session["MS_Control"].ToString(), Session["MS_BinNumber"].ToString(),
                                     Session["MS_GreenRainCode"].ToString(), Session["MS_BrandName"].ToString(), Session["MS_MaxiMumDiscount"].ToString(), Session["MS_LineID"].ToString(),
                                     Session["MS_UnitSale"].ToString(), Session["MS_UnitCost"].ToString(), Session["MS_itemAWT"].ToString(), Session["MS_itemForm"].ToString(),
-                                    Session["MS_itemStrength"].ToString(), Session["MS_itemPackType"].ToString(), Session["MS_itemPackSize"].ToString(), Session["MS_Description"].ToString());
+                                    Session["MS_itemStrength"].ToString(), Session["MS_itemPackType"].ToString(), Session["MS_itemPackSize"].ToString(), Session["MS_Description"].ToString()
+                                    , Session["MS_Bonus12"].ToString(), Session["MS_Bonus25"].ToString(), Session["MS_Bonus50"].ToString());
                 }
                 #endregion
 
@@ -181,7 +182,7 @@ namespace IMS
         public void FromMaster_Load(String ItemNo, String ItemName, String ItemType, String Manufacturer, String Category, String GenericName,
                                     String Control, String BinNumber, String GreenRain, String BrandName, String MaxDiscount, String LineID, 
                                     String UnitSale, String UnitCost, String ItemAwt, String Form, String Strength, String itemPackType,
-                                    String itemPackSize, String Description)
+                                    String itemPackSize, String Description,string b12,string b25,string b50)
         {
             GreenRainCode.Text = GreenRain;
             ProductName.Text = ItemName;
@@ -197,7 +198,9 @@ namespace IMS
             PackType.Text = itemPackType;
             PackSize.Text = itemPackSize;
             binNumber.Text = BinNumber;
-
+            bonus12.Text = b12;
+            bonus25.Text = b25;
+            bonus50.Text = b50;
         }
         protected void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -264,7 +267,7 @@ namespace IMS
                             {
                                 command.Parameters.AddWithValue("@p_productOrderType", DBNull.Value);
                             }
-                            int res1, res4;
+                            int res1, res4, res7, res8, res9;
                             float res2, res3, res5;
                             if (int.TryParse(ProductSubCat.SelectedValue.ToString(), out res1))
                             {
@@ -310,7 +313,32 @@ namespace IMS
                             {
                                 command.Parameters.AddWithValue("@p_AWT", 0);
                             }
+                            if (int.TryParse(bonus12.Text, out res7))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus12", res7);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus12", 0);
+                            }
 
+                            if (int.TryParse(bonus25.Text, out res8))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus25", res8);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus25", 0);
+                            }
+
+                            if (int.TryParse(bonus50.Text, out res9))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus50", res9);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus50", 0);
+                            }
 
                             command.Parameters.AddWithValue("@p_form", ItemForm.Text.ToString());
                             command.Parameters.AddWithValue("@p_strength", ItemStrength.Text.ToString());
@@ -386,7 +414,7 @@ namespace IMS
                             {
                                 command.Parameters.AddWithValue("@p_productOrderType", DBNull.Value);
                             }
-                            int res1, res4,res6;
+                            int res1, res4,res6,res7,res8,res9;
                             float res2, res3, res5;
 
                             
@@ -397,6 +425,33 @@ namespace IMS
                             else
                             {
                                 command.Parameters.AddWithValue("@p_ProductID", 0);
+                            }
+
+                            if (int.TryParse(bonus12.Text, out res7))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus12", res7);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus12", 0);
+                            }
+
+                            if (int.TryParse(bonus25.Text, out res8))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus25", res8);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus25", 0);
+                            }
+
+                            if (int.TryParse(bonus50.Text, out res9))
+                            {
+                                command.Parameters.AddWithValue("@p_bonus50", res9);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_bonus50", 0);
                             }
 
                             if (float.TryParse(ProductCost.Text.ToString(), out res2))
@@ -435,7 +490,7 @@ namespace IMS
                                 command.Parameters.AddWithValue("@p_AWT", 0);
                             }
 
-
+                            
                             command.Parameters.AddWithValue("@p_form", ItemForm.Text.ToString());
                             command.Parameters.AddWithValue("@p_strength", ItemStrength.Text.ToString());
                             command.Parameters.AddWithValue("@p_packtype", PackType.Text.ToString());
@@ -469,8 +524,9 @@ namespace IMS
                                 ItemStrength.Text = "";
                                 PackType.Text = "";
                                 PackSize.Text = "";
-
-                                
+                                bonus12.Text = "";
+                                bonus25.Text = "";
+                                bonus50.Text = "";
                             }
                         }
                         catch (Exception ex)
@@ -507,6 +563,9 @@ namespace IMS
                 ProductCost.Text = string.Empty;
                 ProductSale.Text = string.Empty;
                 ProductDiscount.Text = string.Empty;
+                bonus12.Text = string.Empty;
+                bonus25.Text = string.Empty;
+                bonus50.Text = string.Empty;
         }
 
         protected void ProductDept_SelectedIndexChanged(object sender, EventArgs e)
