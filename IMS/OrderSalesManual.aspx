@@ -73,9 +73,9 @@
                         <ItemStyle  Width="1px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                     <asp:TemplateField HeaderText="From" Visible="false" HeaderStyle-Width ="110px">
+                     <asp:TemplateField HeaderText="ProductID" Visible="false" HeaderStyle-Width ="110px">
                         <ItemTemplate>
-                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("FromPlace") %>' Width="100px" ></asp:Label>
+                            <asp:Label ID="lblProductID" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductID") %>' Width="100px" ></asp:Label>
                         </ItemTemplate>
                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
 
@@ -88,9 +88,10 @@
                         <ItemStyle  Width="150px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                      <asp:TemplateField HeaderText="Action" HeaderStyle-Width ="110px">
+                      <asp:TemplateField HeaderText="Action" HeaderStyle-Width ="200px">
                         <ItemTemplate>
                             <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" CommandName="Edit" />
+                            <asp:Button CssClass="btn btn-default" ID="btnDetails" Text="Details" runat="server" CommandName="Details" CommandArgument='<%# Container.DataItemIndex %>'/>
                             <span onclick="return confirm('Are you sure you want to delete this record?')">
                                 <asp:Button CssClass="btn btn-default" ID="btnDelete" Text="Delete" runat="server" CommandName="Delete"/>
                             </span>
@@ -102,7 +103,7 @@
                             <asp:LinkButton CssClass="btn btn-default" ID="btnCancel" Text="Cancel" runat="server" CommandName="Cancel" />
                         </EditItemTemplate>
                          
-                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
+                         <ItemStyle  Width="280px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                       <asp:TemplateField HeaderText="Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -142,14 +143,14 @@
                          <ItemStyle  Width="160px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                      <asp:TemplateField HeaderText="Available Stock"  HeaderStyle-Width ="120px">
+                      <asp:TemplateField HeaderText="Total Available Stock"  HeaderStyle-Width ="190px">
                         <ItemTemplate>
                             <asp:Label ID="lblAvStock" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("AvailableStock") %>' ></asp:Label>
                         </ItemTemplate>
                           <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                     <asp:TemplateField HeaderText="Quantity"  HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Quantity"  HeaderStyle-Width ="60px"> 
                         <ItemTemplate>
                             <asp:Label ID="lblQuantity" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Qauntity") %>' ></asp:Label>
                         </ItemTemplate>
@@ -161,7 +162,7 @@
                           <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                      <asp:TemplateField HeaderText="Sale Price"  HeaderStyle-Width ="90px">
+                      <asp:TemplateField HeaderText="Sale Price"  HeaderStyle-Width ="150px">
                         <ItemTemplate>
                             <asp:Label ID="lblSales" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("SalePrice") %>' ></asp:Label>
                         </ItemTemplate>
@@ -182,7 +183,7 @@
              </asp:GridView>
         <br />
          <asp:Button ID="btnAccept" runat="server" OnClick="btnAccept_Click" Text="GENERATE ORDER" CssClass="btn btn-large" Visible="false"/>
-         <asp:Button ID="btnDecline" runat="server" OnClick="btnDecline_Click" Text="CANCEL ORDER" CssClass="btn btn-large" Visible="false" />
+         <asp:Button ID="btnDecline" runat="server" OnClick="btnDecline_Click" Text="DELETE ORDER" CssClass="btn btn-large" Visible="false" />
     </div>
     <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
