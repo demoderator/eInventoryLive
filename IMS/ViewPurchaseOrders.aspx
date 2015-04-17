@@ -8,7 +8,7 @@
         <asp:Label runat="server" AssociatedControlID="StockAt" CssClass="col-md-2 control-label">Search by Vendor Name </asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="SelectProduct" CssClass="form-control product"/>
-                <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click" Text="SearchProduct" Height="35px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
+                <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click" Text="SearchProduct" Height="30px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
                 <br />
                 <asp:DropDownList runat="server" ID="StockAt" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="StockAt_SelectedIndexChanged" Visible="false"/>
                 <br/>
@@ -22,7 +22,8 @@
                  <Columns>
                     <asp:TemplateField HeaderText="Request No."   HeaderStyle-Width ="110px" Visible="false">
                         <ItemTemplate>
-                            <asp:Label ID="RequestedNO" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderID") %>' Width="100px" ></asp:Label>
+                            <asp:Literal runat="server" ID="RequestedNO"  Text='<%# Eval("OrderID") %>'></asp:Literal>
+                            <%--<asp:Label ID="RequestedNO" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderID") %>' Width="100px" ></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
 
@@ -30,27 +31,31 @@
                      
                      <asp:TemplateField HeaderText="Request Date" HeaderStyle-Width ="150px">
                         <ItemTemplate>
-                            <asp:Label ID="RequestedDate" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderDate") %>'  Width="140px"></asp:Label>
+                            <asp:Literal runat="server" ID="RequestedDate" Text='<%# Eval("OrderDate") %>' ></asp:Literal>
+                            <%--<asp:Label ID="RequestedDate" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderDate") %>'  Width="140px"></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="150px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
                      <asp:TemplateField HeaderText="Requested From" HeaderStyle-Width ="200px">
                         <ItemTemplate>
-                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFrom") %>'  Width="200px" ></asp:Label>
+                            <asp:Literal runat="server" ID="RequestedFrom" Text='<%# Eval("reqFrom") %>'></asp:Literal>
+                            <%--<asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFrom") %>'  Width="200px" ></asp:Label>--%>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
                      <asp:TemplateField HeaderText="Requested From ID" HeaderStyle-Width ="200px" Visible="false">
                         <ItemTemplate>
-                            <asp:Label ID="RequestedFromID" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFromID") %>'  Width="200px" ></asp:Label>
+                            <asp:Literal runat="server" ID="RequestedFromID" Text='<%# Eval("reqFromID") %>'></asp:Literal>
+                            <%--<asp:Label ID="RequestedFromID" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFromID") %>'  Width="200px" ></asp:Label>--%>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
                       <asp:TemplateField HeaderText="role" HeaderStyle-Width ="200px" Visible="false">
                         <ItemTemplate>
+                            
                             <asp:Label ID="lblSysRole" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("roleName") %>'  Width="200px" ></asp:Label>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>
