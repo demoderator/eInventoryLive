@@ -57,3 +57,7 @@ C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSCommon\bin\Debug\IMSCommon.p
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSCommon\obj\Debug\IMSCommon.csprojResolveAssemblyReference.cache
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSCommon\obj\Debug\IMSCommon.dll
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSCommon\obj\Debug\IMSCommon.pdb
+D:\Naseemullah\eInvetory\eInventoryLive\IMSCommon\bin\Debug\IMSCommon.dll
+D:\Naseemullah\eInvetory\eInventoryLive\IMSCommon\bin\Debug\IMSCommon.pdb
+D:\Naseemullah\eInvetory\eInventoryLive\IMSCommon\obj\Debug\IMSCommon.dll
+D:\Naseemullah\eInvetory\eInventoryLive\IMSCommon\obj\Debug\IMSCommon.pdb

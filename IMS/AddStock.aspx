@@ -41,66 +41,33 @@
     <div class="form-horizontal">
         <h4>Add Stock</h4>
         <hr />
-        
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="BarCodeSerial" CssClass="col-md-2 control-label">BarCode Serial</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="BarCodeSerial" CssClass="form-control" Enabled="False" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductName" CssClass="col-md-2 control-label">Product Name</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductName" CssClass="form-control" Enabled="False" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Quantity" CssClass="col-md-2 control-label">Stock Quantity</asp:Label>
-            <div class="col-md-10">
-
-                <asp:TextBox runat="server" ID="Quantity" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Quantity" CssClass="text-danger" ErrorMessage="The product quantity field is required." ValidationGroup="ExSave"/>
-                <br />
-            </div>
-        </div>
-
-         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="DateTextBox"  CssClass="col-md-2 control-label">Stock Expiry</asp:Label>
-            <div class="col-md-10">
-                 <asp:TextBox runat="server" ID="DateTextBox" CssClass="form-control" />
-                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DateTextBox" CssClass="text-danger" ErrorMessage="The product expiry field is required." ValidationGroup="ExSave"/>
-                <br />
-            </div>
-            
-        </div>
-        
-       
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductSale" CssClass="col-md-2 control-label">Unit Sale Price</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductSale" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ProductCost" CssClass="col-md-2 control-label">Unit Cost Price</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ProductCost" CssClass="form-control" />
-                <br />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <asp:Button ID="btnCreateProduct" runat="server" OnClick="btnCreateProduct_Click" Enabled="false" Text="ADD" CssClass="btn btn-default" ValidationGroup="ExSave"/>
+        <table cellspacing="0" cellpadding="5" border="0" width="100%" class="formTbl">
+            <tr>
+                <td><asp:Label runat="server" AssociatedControlID="BarCodeSerial" CssClass="control-label">BarCode Serial</asp:Label></td>
+                <td> <asp:TextBox runat="server" ID="BarCodeSerial" CssClass="form-control" Enabled="False" /></td>
+                <td> <asp:Label runat="server" AssociatedControlID="ProductName" CssClass=" control-label">Product Name</asp:Label></td>
+                <td> <asp:TextBox runat="server" ID="ProductName" CssClass="form-control" Enabled="False" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label runat="server" AssociatedControlID="Quantity" CssClass=" control-label">Stock Quantity</asp:Label></td>
+                <td><asp:TextBox runat="server" ID="Quantity" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Quantity" CssClass="text-danger" ErrorMessage="The product quantity field is required." ValidationGroup="ExSave"/></td>
+            <td><asp:Label runat="server" AssociatedControlID="DateTextBox"  CssClass=" control-label">Stock Expiry</asp:Label></td>
+                <td><asp:TextBox runat="server" ID="DateTextBox" CssClass="form-control" />
+                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DateTextBox" CssClass="text-danger" ErrorMessage="The product expiry field is required." ValidationGroup="ExSave"/></td>
+              </tr>
+            <tr>
+                <td><asp:Label runat="server" AssociatedControlID="ProductSale" CssClass=" control-label">Unit Sale Price</asp:Label></td>
+                <td><asp:TextBox runat="server" ID="ProductSale" CssClass="form-control" /></td>
+                <td> <asp:Label runat="server" AssociatedControlID="ProductCost" CssClass="control-label">Unit Cost Price</asp:Label></td>
+                <td><asp:TextBox runat="server" ID="ProductCost" CssClass="form-control" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="100%"><asp:Button ID="btnCreateProduct" runat="server" OnClick="btnCreateProduct_Click" Enabled="false" Text="ADD" CssClass="btn btn-default" ValidationGroup="ExSave"/>
                 <asp:Button ID="btnCancelProduct" runat="server" OnClick="btnCancelProduct_Click" Text="CANCEL" CssClass="btn btn-default" />
-                <asp:Button ID="btnBack" runat="server" CssClass="btn btn-primary btn-large" Text="Go Back" OnClick="btnBack_Click"/>
-            </div>
-        </div>
+                <asp:Button ID="btnBack" runat="server" CssClass="btn btn-primary btn-large" Text="Go Back" OnClick="btnBack_Click"/></td>
+            </tr>
+            </table>
     </div>
 </asp:Content>

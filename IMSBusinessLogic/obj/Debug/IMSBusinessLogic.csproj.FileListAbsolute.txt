@@ -96,3 +96,10 @@ C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSBusinessLogic\bin\Debug\IMSC
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.dll
 C:\Users\HP Probook\Documents\GitHub\E-Inventory\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.pdb
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\bin\Debug\IMSBusinessLogic.dll
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\bin\Debug\IMSBusinessLogic.pdb
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\bin\Debug\IMSCommon.dll
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\bin\Debug\IMSCommon.pdb
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.csprojResolveAssemblyReference.cache
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.dll
+D:\Naseemullah\eInvetory\eInventoryLive\IMSBusinessLogic\obj\Debug\IMSBusinessLogic.pdb
