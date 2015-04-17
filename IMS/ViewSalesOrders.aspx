@@ -8,7 +8,7 @@
           </script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-      <h2> Placed Order(s)</h2> 
+      <h2> Placed Sale Order(s)</h2> 
     <br />
      <script src="Scripts/jquery.js"  type="text/javascript"></script>
           <script src="Scripts/jquery-ui.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@
           </script>
     <div class="form-horizontal">
      <div class="form-group">
-        <asp:Label runat="server" AssociatedControlID="StockAt" CssClass="col-md-2 control-label">Vendor Name </asp:Label>
+        <asp:Label runat="server" AssociatedControlID="StockAt" CssClass="col-md-2 control-label">Store Name </asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="SelectProduct" CssClass="form-control product"/>
                 <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click" Text="SearchProduct" Height="35px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
@@ -86,6 +86,19 @@
 
                     </asp:TemplateField>
                      
+                      <asp:TemplateField HeaderText="Invoice" Visible="false" HeaderStyle-Width ="150px">
+                        <ItemTemplate>
+                            <asp:Label ID="Invoice" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("InvoiceNumber") %>'  Width="180px"></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle  Width="180px" HorizontalAlign="Left"/>
+                      </asp:TemplateField>
+                     
+                     <asp:TemplateField HeaderText="SystemID" Visible="false" HeaderStyle-Width ="150px">
+                        <ItemTemplate>
+                            <asp:Label ID="SystemID" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("SystemID") %>'  Width="180px"></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle  Width="180px" HorizontalAlign="Left"/>
+                      </asp:TemplateField>
                      <asp:TemplateField HeaderText="Order Date" HeaderStyle-Width ="150px">
                         <ItemTemplate>
                             <asp:Label ID="OrderDate" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderDate") %>'  Width="180px"></asp:Label>

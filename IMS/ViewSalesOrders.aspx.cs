@@ -81,7 +81,7 @@ namespace IMS
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("sp_GetPendingOrders_ByVendorID", connection);
+                SqlCommand command = new SqlCommand("sp_GetPendingSO_byID", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 if (String.IsNullOrWhiteSpace(VendorID) || StockAt.SelectedIndex <= 0)
                 {
@@ -200,9 +200,15 @@ namespace IMS
                     int Pageindex = Convert.ToInt32(StockDisplayGrid.PageIndex);
 
                     Label OrderNo = (Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("OrderNO");
+                    Label SystemID = (Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("SystemID");
+                    Label Invoice = (Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("Invoice");
+
                     //session is setting
                     Session["OrderNumber"] = OrderNo.Text.ToString();
                     Session["OrderSalesDetail"] = true;
+                    Session["SystemID"] = SystemID.Text;
+                    Session["Invoice"] = Invoice.Text;
+
                     Response.Redirect("OrderSalesManual.aspx", false);
                 }
                 else if (e.CommandName.Equals("Delete"))
@@ -211,9 +217,10 @@ namespace IMS
 
                     Label OrderNo = (Label)StockDisplayGrid.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("OrderNO");
 
+                   
                     int orderID = int.Parse(OrderNo.Text.ToString());
                     connection.Open();
-                    SqlCommand command = new SqlCommand("sp_DeleteOrder", connection);
+                    SqlCommand command = new SqlCommand("sp_DeleteSO", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderID", orderID);
 

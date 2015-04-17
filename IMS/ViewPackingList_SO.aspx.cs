@@ -23,11 +23,12 @@ namespace IMS
             {
                 LoadData(Session["RequestedNO"].ToString());
                 #region RequestTo&FROM Population
+                SaleOrder.Text = Session["RequestedNO"].ToString();
                 DataSet dsTo = GetSystems(Convert.ToInt32(Session["RequestedFromID"].ToString()));
                 DataSet dsFROM = GetSystems(Convert.ToInt32(Session["UserSys"].ToString()));
-                SendDate.Text = "Send Date : " + System.DateTime.Now.ToShortDateString();
-                From.Text = dsFROM.Tables[0].Rows[0]["SystemName"].ToString();
-                FromAddress.Text = dsFROM.Tables[0].Rows[0]["SystemAddress"].ToString();
+                SendDate.Text = System.DateTime.Now.ToShortDateString();
+                //From.Text = dsFROM.Tables[0].Rows[0]["SystemName"].ToString();
+               // FromAddress.Text = dsFROM.Tables[0].Rows[0]["SystemAddress"].ToString();
                 To.Text = dsTo.Tables[0].Rows[0]["SystemName"].ToString();
                 ToAddress.Text = dsTo.Tables[0].Rows[0]["SystemAddress"].ToString();
                 #endregion
@@ -67,7 +68,7 @@ namespace IMS
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("sp_GetGenOrderDetails_OrdID", connection);
+                SqlCommand command = new SqlCommand("sp_GetGenSODetails_OrdID", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_OrderID", OrderID);
 
@@ -172,5 +173,36 @@ namespace IMS
         {
 
         }
+
+        protected void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("sp_GetSaleOrderDetailList", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_OrderID", Convert.ToInt32(Session["RequestedNO"].ToString()));
+                DataSet ds = new DataSet();
+                SqlDataAdapter sA = new SqlDataAdapter(command);
+                sA.Fill(ds);
+
+                MyExcel.FILE_PATH = Server.MapPath(@"~\SaleOrderFormat\").ToString();
+                string convertedFilePath = MyExcel.WriteExcelWithSalesOrderInfo(SaleOrder.Text, SendDate.Text, (Environment.NewLine + To.Text + Environment.NewLine + ToAddress.Text), ds, Server.MapPath(@"~\SaleOrderFormat\"));
+
+                Response.AppendHeader("content-disposition", "attachment; filename=" + convertedFilePath);
+                Response.ContentType = "Application/msexcel";
+                Response.WriteFile(convertedFilePath);
+                Response.End();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }

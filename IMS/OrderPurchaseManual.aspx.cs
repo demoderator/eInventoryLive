@@ -316,7 +316,8 @@ namespace IMS
                     SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByStore", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    int OrderNumber, BonusOrdered, ProductNumber, Quantity = 0;
+                    int OrderNumber, BonusOrdered, ProductNumber, Quantity;
+                    OrderNumber = BonusOrdered = ProductNumber = Quantity = 0;
 
                     if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                     {

@@ -35,10 +35,13 @@
                 <asp:ImageButton ID="btnSearchVendor" runat="server" OnClick="btnSearchVendor_Click" Height="30px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
                 <br />
                 <asp:DropDownList runat="server" ID="RequestTo" CssClass="form-control" Width="280" AutoPostBack="true" OnSelectedIndexChanged="RequestTo_SelectedIndexChanged" Visible="false" >
-                <%--class="chzn-select"   <asp:ListItem Text="" Value=""></asp:ListItem>
+                
+                    <%--class="chzn-select"   <asp:ListItem Text="" Value=""></asp:ListItem>
                   <asp:ListItem Value=''> ------------------- Select ------------------ </asp:ListItem>--%>
                     
                  </asp:DropDownList>
+                 <asp:RequiredFieldValidator runat="server" ControlToValidate="RequestTo" CssClass="text-danger" ErrorMessage="The Vendor field is required." ValidationGroup="ExSave"/>
+                
                 
            </td>
        
@@ -47,7 +50,9 @@
                 <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click"  Height="30px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
                 
                 <asp:DropDownList runat="server" ID="SelectProduct" Visible="false" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="SelectProduct_SelectedIndexChanged"/>
-                </td>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="SelectProduct" CssClass="text-danger" ErrorMessage="The Product field is required." ValidationGroup="ExSave"/>
+                 
+               </td>
            </tr>
         <tr>
             <td><asp:Label runat="server" AssociatedControlID="SelectQuantity" CssClass="control-label">Enter Quantity</asp:Label></td>
@@ -60,7 +65,7 @@
        <tr>
            <td></td>
            <td colspan="100%">
-               <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-primary" />
+               <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-primary" ValidationGroup="ExSave"/>
                 <asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="REFRESH" CssClass="btn btn-default" Visible="False" />
                 <asp:Button ID="btnCancelOrder" runat="server" OnClick="btnCancelOrder_Click" Text="GO BACK" CssClass="btn btn-default btn-large" />
 

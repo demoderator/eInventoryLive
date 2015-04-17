@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-  <h3>Sale Order Generation - Stock Details</h3>
+    <h3>Sale Order Generation - Stock Details</h3>
     <br />
     <div class="form-group">
         <asp:Label ID="lblTotalSent" CssClass="col-md-2 control-label" runat="server" Text="Total Sent Quantity: "  Width="180px"></asp:Label>
@@ -97,6 +97,17 @@
                         
                         <EditItemTemplate>
                             <asp:TextBox ID="txtBonus" CssClass="form-control" runat="server" Text='<%#Eval("BonusQuantity") %>' ></asp:TextBox>
+                        </EditItemTemplate>
+                          <ItemStyle  Width="60px" HorizontalAlign="Left"/>
+                      </asp:TemplateField>
+
+                      <asp:TemplateField HeaderText="Discount %"  HeaderStyle-Width ="100px"> 
+                        <ItemTemplate>
+                            <asp:Label ID="lblDiscount" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Discount") %>' ></asp:Label>
+                        </ItemTemplate>
+                        
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtDiscount" CssClass="form-control" runat="server" Text='<%#Eval("Discount") %>' ></asp:TextBox>
                         </EditItemTemplate>
                           <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                       </asp:TemplateField>

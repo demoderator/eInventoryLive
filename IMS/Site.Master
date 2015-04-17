@@ -27,10 +27,17 @@
         document.onkeypress = stopRKey;
 
     </script>
+    <style>
+        @media print {
+            .no-print, .no-print * {
+                display: none !important;
+            }
+        }
+    </style>
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
 <body>
-    <div class="container">
+    <div class="container no-print">
       <form runat="server">
         <div class="top-head">
                 
@@ -97,8 +104,8 @@
             </div>
         </div>--%>
 
-          <div class="navs-cont">
-                <div class="navigation">
+          <div class="navs-cont no-print">
+                <div class="navigation no-print">
                     
                     <asp:Literal runat="server" ID="warehouseNav">
     <ul class="main-menu">
@@ -124,6 +131,7 @@
 
                                     </li>
                                     <li><a href="OrderSalesManual.aspx">Generate Sale Order</a></li>
+                                     <li><a href="ViewSalesOrders.aspx">View Sale Orders</a></li>
                                     <li class="hasChild"><a href="RecieveOrder.aspx">Recieve Orders</a>
 
                                         <ul>
@@ -188,7 +196,7 @@
 
    </div>
 
-      <div class="footer">
+      <div class="footer no-print">
 
               <div class="fcont">
 

@@ -1173,6 +1173,12 @@ ul.actions li.firstli{
     overflow-x:auto;
 }
 
+img {
+    vertical-align: middle; 
+   top: 0px ; 
+   left: 0px; 
+   position: inherit; 
+}
 .formTbl tr td {
     padding:5px;
 }

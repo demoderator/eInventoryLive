@@ -13,7 +13,10 @@
             <td><asp:TextBox runat="server" ID="txtIvnoice" CssClass="form-control" /></td>
         
             <td><asp:Label runat="server" AssociatedControlID="StockAt" CssClass="control-label">Select Store </asp:Label></td>
-            <td><asp:DropDownList runat="server" ID="StockAt" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="StockAt_SelectedIndexChanged"/></td>
+            <td><asp:DropDownList runat="server" ID="StockAt" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="StockAt_SelectedIndexChanged"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="StockAt" CssClass="text-danger" ErrorMessage="The Store field is required." ValidationGroup="ExSave"/></td>
+            
+                        
         </tr>
         <tr>
             <td><asp:Label runat="server" AssociatedControlID="txtProduct" CssClass="control-label">Select Product</asp:Label></td>
@@ -21,6 +24,8 @@
                 <asp:ImageButton ID="btnSearchProduct" runat="server" OnClick="btnSearchProduct_Click"  Height="30px" ImageUrl="~/Images/search-icon-512.png" Width="45px" />
                 
                 <asp:DropDownList runat="server" ID="SelectProduct" Visible="false" CssClass="form-control" Width="280" AutoPostBack="True" OnSelectedIndexChanged="SelectProduct_SelectedIndexChanged"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="SelectProduct" CssClass="text-danger" ErrorMessage="The Product field is required." ValidationGroup="ExSave"/>
+             
                 </td>
             <td><asp:Label runat="server" AssociatedControlID="SelectQuantity" CssClass="control-label">Enter Quantity</asp:Label></td>
             <td> <asp:TextBox runat="server" ID="SelectQuantity" CssClass="form-control" /></td>
@@ -30,7 +35,7 @@
             <td></td>
             <td colspan="100%">
 
-                <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-primary" />
+                <asp:Button ID="btnCreateOrder" runat="server" OnClick="btnCreateOrder_Click" Text="ADD" CssClass="btn btn-primary" ValidationGroup="ExSave"/>
                 <asp:Button ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Text="REFRESH" CssClass="btn btn-default" Visible="False" />
                 <asp:Button ID="btnCancelOrder" runat="server" OnClick="btnCancelOrder_Click" Text="GO BACK" CssClass="btn btn-default btn-large" />
 
@@ -90,7 +95,7 @@
                          
                          <ItemStyle  Width="280px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                      <asp:TemplateField HeaderText="Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
+                      <asp:TemplateField Visible="false" HeaderText="Name : Strength : Form : Pack Size" HeaderStyle-Width="500" HeaderStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label ID="ProductName2" padding-right="5px" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
                             <asp:Label ID="Label1" padding-right="5px" runat="server" Text=" : "></asp:Label>
@@ -102,11 +107,11 @@
                         </ItemTemplate>
                         
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Name" Visible="false" HeaderStyle-Width ="150px">
+                     <asp:TemplateField HeaderText="Product Description" Visible="true" HeaderStyle-Width ="350px">
                         <ItemTemplate>
-                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("ProductName") %>'  Width="150px" ></asp:Label>
+                            <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Description") %>'  Width="350px" ></asp:Label>
                         </ItemTemplate>
-                         <ItemStyle  Width="160px" HorizontalAlign="Left"/>
+                         <ItemStyle  Width="350px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                     
                       <asp:TemplateField HeaderText="Strength" Visible="false" HeaderStyle-Width ="150px">
