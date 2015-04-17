@@ -52,6 +52,20 @@
                 <br />
             </div>
         </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Address" CssClass="col-md-2 control-label">Address</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="Address" CssClass="form-control" />
+                <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="ContactNo" CssClass="col-md-2 control-label">Contact:#</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="ContactNo" CssClass="form-control" />
+                <br />
+            </div>
+        </div>
         
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -61,4 +75,11 @@
             </div>
         </div>
     </div>
+    <asp:GridView ID="RegisterUserDisplayGrid" CssClass="table table-striped table-bordered table-condensed" runat="server" AllowPaging="True" PageSize="10" 
+                AutoGenerateColumns="false">
+        <Columns>
+
+        </Columns>
+        </asp:GridView>
+    
 </asp:Content>
