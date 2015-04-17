@@ -540,6 +540,7 @@ namespace IMS
                         command.Parameters.AddWithValue("@p_BarCode", newBarcode);
                         command.Parameters.AddWithValue("@p_DiscountPercentage", txtDisc);
                         command.Parameters.AddWithValue("@p_Bonus", bonusQuan);
+                        command.Parameters.AddWithValue("@p_bonusOriginal", bonusOrg);
                         if (!String.IsNullOrEmpty(lblBatch))
                         {
                             command.Parameters.AddWithValue("@p_BatchNumber", lblBatch);
@@ -641,7 +642,7 @@ namespace IMS
                 string lblDef = ((Label)StockDisplayGrid.Rows[e.RowIndex].FindControl("lblDefQuan")).Text;
                 string lblRet = ((Label)StockDisplayGrid.Rows[e.RowIndex].FindControl("lblRetQuan")).Text;
                 string lblBonus = ((Label)StockDisplayGrid.Rows[e.RowIndex].FindControl("lblBonus")).Text;
-                 
+                int orderedQuantity = int.Parse(OrdQuantity.Text); 
                     
                 
 
@@ -658,7 +659,8 @@ namespace IMS
                 int.TryParse(lblExp, out expQuan);
                 int.TryParse(lblDef, out defQuan);
                 int.TryParse(lblRet, out retQuan);
-
+                int remainingValue  = int.Parse(RemQuantity.Text);
+                
                 #endregion
                 
                 #region Query Execution
@@ -674,6 +676,7 @@ namespace IMS
                 command.Parameters.AddWithValue("@p_ProductID", int.Parse(lblProdID.Text));
                 command.Parameters.AddWithValue("@p_StoreID", Session["UserSys"].ToString());
                 command.Parameters.AddWithValue("@p_ReceivedQuantity", recQuan);
+                command.Parameters.AddWithValue("@p_orderMasterID", int.Parse(lblOMISD.Text));
                 if (!string.IsNullOrWhiteSpace(lblExpOrg))
                 {
                     command.Parameters.AddWithValue("@p_expiryOriginal", expiryOrg);
@@ -686,6 +689,15 @@ namespace IMS
                 command.Parameters.AddWithValue("@p_DefectedQuantity", defQuan);
                 command.Parameters.AddWithValue("@p_ReturnedQuantity", retQuan);
                 command.Parameters.AddWithValue("@p_Bonus", bonusQuan);
+                if ((remainingValue + (recQuan + retQuan + defQuan + expQuan)) == orderedQuantity)
+                {
+                    command.Parameters.AddWithValue("@p_status", "Pending");
+                }
+                else if ((remainingValue + (recQuan + retQuan + defQuan + expQuan)) < orderedQuantity)
+                {
+                    command.Parameters.AddWithValue("@p_status", "Partial");
+                }
+               
                 command.ExecuteNonQuery();
                 WebMessageBoxUtil.Show("Entry Successfully Deleted ");
                 #endregion

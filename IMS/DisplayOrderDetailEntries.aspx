@@ -96,7 +96,7 @@
                     </asp:TemplateField>
 
                     
-                    <asp:TemplateField HeaderText="Accepted Quantity" HeaderStyle-Width ="60px">
+                    <asp:TemplateField HeaderText="Accepted Quantity">
                         <ItemTemplate>
                             <asp:Label ID="lblRecQuan" runat="server" Text=' <%#Eval("ReceivedQuantity")==DBNull.Value?0:int.Parse( Eval("ReceivedQuantity").ToString())  %>'></asp:Label>
                         </ItemTemplate>
@@ -104,12 +104,12 @@
                              <asp:TextBox ID="RecQuanVal"  runat="server" Text=' <%#Eval("ReceivedQuantity")==DBNull.Value?0:int.Parse( Eval("ReceivedQuantity").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                          <FooterTemplate>
-                            <asp:TextBox ID="txtAddRecQuan" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddRecQuan" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                   
-                     <asp:TemplateField HeaderText="Expired Quantity" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Expired Quantity">
                         <ItemTemplate>
                             <asp:Label ID="lblExpQuan" runat="server" Text=' <%#Eval("ExpiredQuantity")==DBNull.Value?0:int.Parse( Eval("ExpiredQuantity").ToString())  %>'></asp:Label>
                         </ItemTemplate>
@@ -117,12 +117,12 @@
                              <asp:TextBox ID="ExpQuanVal"  runat="server" Text=' <%#Eval("ExpiredQuantity")==DBNull.Value?0:int.Parse( Eval("ExpiredQuantity").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddExpQuan" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddExpQuan" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                      
-                      <asp:TemplateField HeaderText="Defected Quantity" HeaderStyle-Width ="60px">
+                      <asp:TemplateField HeaderText="Defected Quantity">
                         <ItemTemplate>
                             <asp:Label ID="lblDefQuan" runat="server" Text=' <%#Eval("DefectedQuantity")==DBNull.Value?0:int.Parse( Eval("DefectedQuantity").ToString())  %>'></asp:Label>
                         </ItemTemplate>
@@ -130,12 +130,12 @@
                              <asp:TextBox ID="defQuanVal"  runat="server" Text=' <%#Eval("DefectedQuantity")==DBNull.Value?0:int.Parse( Eval("DefectedQuantity").ToString())  %> ' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                            <FooterTemplate>
-                            <asp:TextBox ID="txtAddDefQuan" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddDefQuan" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                     <asp:TemplateField HeaderText="Returned Quantity" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Returned Quantity">
                         <ItemTemplate>
                             <asp:Label ID="lblRetQuan" runat="server" Text=' <%#Eval("ReturnedQuantity")==DBNull.Value?0:int.Parse( Eval("ReturnedQuantity").ToString())  %>'></asp:Label>
                         </ItemTemplate>
@@ -143,12 +143,12 @@
                              <asp:TextBox ID="retQuanVal"  runat="server" Text=' <%#Eval("ReturnedQuantity")==DBNull.Value?0:int.Parse( Eval("ReturnedQuantity").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddRetQuan" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddRetQuan" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                      <asp:TemplateField HeaderText="Bonus Quantity" HeaderStyle-Width ="60px">
+                      <asp:TemplateField HeaderText="Bonus Quantity">
                         <ItemTemplate>
                             <asp:Label ID="lblBonus" runat="server" Text=' <%#Eval("BonusQuantity")==DBNull.Value?0:int.Parse( Eval("BonusQuantity").ToString())  %>'></asp:Label>
                         </ItemTemplate>
@@ -156,11 +156,11 @@
                              <asp:TextBox ID="txtBonus" runat="server" Text=' <%#Eval("BonusQuantity")==DBNull.Value?0:int.Parse( Eval("BonusQuantity").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                            <FooterTemplate>
-                            <asp:TextBox ID="txtAddBonus" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddBonus" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Cost Price" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Cost Price">
                         <ItemTemplate>
                             <asp:Label ID="lblCP"  runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
                         </ItemTemplate>
@@ -168,12 +168,12 @@
                              <asp:TextBox ID="retCP"  runat="server" Text=' <%#Eval("CostPrice")==DBNull.Value?0:float.Parse( Eval("CostPrice").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddCP" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddCP" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                          <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                     
-                     <asp:TemplateField HeaderText="Sale Price" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Sale Price">
                         <ItemTemplate>
                             <asp:Label ID="lblSP"  runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
                         </ItemTemplate>
@@ -181,7 +181,7 @@
                              <asp:TextBox ID="retSP"  runat="server" Text=' <%#Eval("SalePrice")==DBNull.Value?0:float.Parse( Eval("SalePrice").ToString())  %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddSP" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSP" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                          <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
@@ -193,11 +193,11 @@
                              <asp:TextBox ID="txtDisc" Text='<%# Eval("DiscountPercentage") %>'  runat="server" Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddDisPer" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddDisPer" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                          <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Expiry Date" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Expiry Date" >
                         <ItemTemplate>
                             <asp:Label ID="lblExpDate" runat="server" Text='<%# Eval("ExpiryDate")==DBNull.Value?"":Convert.ToDateTime( Eval("ExpiryDate")).ToString("MMM dd ,yyyy") %>'></asp:Label>
                         </ItemTemplate>
@@ -205,11 +205,11 @@
                              <asp:TextBox ID="txtExpDate"  runat="server" Text='<%# Eval("ExpiryDate")==DBNull.Value?"":Convert.ToDateTime( Eval("ExpiryDate")).ToString("MMM dd ,yyyy") %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddExpDate" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddExpDate" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Batch Number" HeaderStyle-Width ="60px">
+                     <asp:TemplateField HeaderText="Batch Number">
                         <ItemTemplate>
                             <asp:Label ID="lblBatch" runat="server" Text='<%# Eval("BatchNumber") %>' ></asp:Label>
                         </ItemTemplate>
@@ -217,7 +217,7 @@
                              <asp:TextBox ID="txtBatch"  runat="server" Text='<%# Eval("BatchNumber") %>' Width="60px"></asp:TextBox>
                          </EditItemTemplate>
                           <FooterTemplate>
-                            <asp:TextBox ID="txtAddBatch" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtAddBatch" runat="server" CssClass="ode-grid-input"></asp:TextBox>
                         </FooterTemplate>
                         <ItemStyle  Width="60px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
@@ -288,7 +288,7 @@
                        
                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
-
+                   
                  </Columns>
              </asp:GridView>
              <br />
