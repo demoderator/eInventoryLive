@@ -103,7 +103,28 @@
                         </ItemTemplate>
                         <ItemStyle  Width="50px" HorizontalAlign="Justify"/>
                     </asp:TemplateField>
-                       <asp:TemplateField HeaderText="">
+                     <asp:TemplateField HeaderText="Bonus 12">
+                        <ItemTemplate>
+                            <asp:Label ID="lblBon12" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Bonus12Quantity") %>' Width="50px"></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle  Width="60px" HorizontalAlign="Justify"/>
+                       
+                    </asp:TemplateField>
+                      <asp:TemplateField HeaderText="Bonus 25">
+                        <ItemTemplate>
+                            <asp:Label ID="lblBon25" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Bonus25Quantity") %>' Width="50px"></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle  Width="60px" HorizontalAlign="Justify"/>
+                       
+                    </asp:TemplateField>
+                      <asp:TemplateField HeaderText="Bonus 50">
+                        <ItemTemplate>
+                            <asp:Label ID="lblBon50" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Bonus50Quantity") %>' Width="50px"></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle  Width="60px" HorizontalAlign="Justify"/>
+                       
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="">
                         <ItemTemplate>
                             <asp:Label ID="lblEmp1" CssClass="col-md-2 control-label" runat="server" Text='' Width="50px"></asp:Label>
                         </ItemTemplate>
