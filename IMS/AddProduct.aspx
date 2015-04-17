@@ -22,7 +22,7 @@
         <hr />
         
 
-         <table cellspacing="0" cellpadding="5" border="0" width="100%">
+         <table cellspacing="5" cellpadding="5" border="0" width="100%" class="formTbl">
              <tr>
                  <td>
                 <asp:Label runat="server" AssociatedControlID="BarCodeSerial" CssClass="control-label">BarCode Serial</asp:Label>
@@ -48,7 +48,7 @@
               
              </tr>
              <tr>
-                 <td><asp:Label runat="server" AssociatedControlID="ProductDept" CssClass=" control-label">Product Department</asp:Label></td>
+                 <td><asp:Label runat="server" AssociatedControlID="ProductDept" CssClass="control-label">Product Department</asp:Label></td>
                  <td><asp:DropDownList runat="server" ID="ProductDept" CssClass="form-control" Width="29%" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ProductDept_SelectedIndexChanged"/></td>
             <td><asp:Label runat="server" AssociatedControlID="ProductCat" CssClass=" control-label">Product Category</asp:Label></td>
                  <td><asp:DropDownList runat="server" ID="ProductCat" CssClass="form-control" Width="29%" AutoPostBack="True" OnSelectedIndexChanged="ProductCat_SelectedIndexChanged" /></td>
@@ -92,13 +92,13 @@
              <tr>
                  <td> <asp:Label runat="server" AssociatedControlID="binNumber" CssClass=" control-label">Bin Number</asp:Label></td>
                  <td>   <asp:TextBox runat="server" ID="binNumber" CssClass="form-control" /></td>
-                <td> <asp:Label runat="server" AssociatedControlID="bonus12" CssClass="col-md-2 control-label">Bonus Quantity 12</asp:Label></td>
+                <td> <asp:Label runat="server" AssociatedControlID="bonus12" CssClass=" control-label">Bonus Quantity 12</asp:Label></td>
                  <td><asp:TextBox runat="server" ID="bonus12" CssClass="form-control" /></td>
              </tr>
              <tr>
-                 <td>  <asp:Label runat="server" AssociatedControlID="bonus25" CssClass="col-md-2 control-label">Bonus Quantity 25</asp:Label></td>
+                 <td>  <asp:Label runat="server" AssociatedControlID="bonus25" CssClass="control-label">Bonus Quantity 25</asp:Label></td>
                  <td> <asp:TextBox runat="server" ID="bonus25" CssClass="form-control" /></td>
-                 <td><asp:Label runat="server" AssociatedControlID="bonus50" CssClass="col-md-2 control-label">Bonus Quantity 50</asp:Label></td>
+                 <td><asp:Label runat="server" AssociatedControlID="bonus50" CssClass="control-label">Bonus Quantity 50</asp:Label></td>
                  <td> <asp:TextBox runat="server" ID="bonus50" CssClass="form-control" /></td>
              </tr>
              <tr>
