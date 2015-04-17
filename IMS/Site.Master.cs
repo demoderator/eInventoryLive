@@ -68,7 +68,23 @@ namespace IMS
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            headofficeNav.Visible = storeNav.Visible = warehouseNav.Visible = false;
+            if (Session["userRole"].ToString() == "WareHouse")
+            {
+                warehouseNav.Visible = true;
+              
+            }
+            else if (Session["userRole"].ToString() == "HeadOffice")
+            {
 
+                headofficeNav.Visible = true;
+             
+            }
+            else if (Session["userRole"].ToString() == "Store")
+            {
+                storeNav.Visible = true;
+             
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

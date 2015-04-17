@@ -9,3 +9,4 @@
          <asp:Button ID="btnViewReport" runat="server" CssClass="btn btn-primary btn-large" Text="View Reports" OnClick="btnViewReport_Click"/>
          <asp:Button ID="BtnRegisterUser" runat="server" CssClass="btn btn-primary btn-large" Text="Register User" OnClick="BtnRegisterUser_Click"/>
 </asp:Content>
+

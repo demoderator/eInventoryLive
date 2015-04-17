@@ -12,6 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
+    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Style/theme.css" rel="stylesheet" type="text/css"  />
     <link href="Style/fonts.css" rel="stylesheet" type="text/css"  />
@@ -99,38 +100,80 @@
           <div class="navs-cont">
                 <div class="navigation">
                     
-                    <div id="MainMenu" style="float: left;">
-	<ul class="level1 main-menu static" tabindex="0" role="menubar" style="position: relative; width: auto; float: left;">
-		<li class="has-popup static" aria-haspopup="MainMenu:submenu:2" role="menuitem" style="position: relative; float: left;"><a class="level1 static" href="#" onclick="__doPostBack('ctl00$MainMenu','1')" tabindex="-1">Manage Inventory</a><ul class="level2 dynamic" id="MainMenu:submenu:2" style="display: none; position: absolute; top: 100%; left: 0px;">
-			<li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="UserManagement.aspx?MenuID=2" tabindex="-1">User</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="RoleManagement.aspx?MenuID=3" tabindex="-1">Roles</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="AccessManagement.aspx?MenuID=6" tabindex="-1">Access</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="CheckbookManagement.aspx?MenuID=20" tabindex="-1">Chequebook</a></li>
-		</ul></li><li class="has-popup static" aria-haspopup="MainMenu:submenu:8" role="menuitem" style="position: relative; float: left;"><a class="level1 static" href="#" onclick="__doPostBack('ctl00$MainMenu','30')" tabindex="-1">Manage Orders</a><ul class="level2 dynamic" id="MainMenu:submenu:8" style="display: none; position: absolute; top: 100%; left: 0px;">
-			<li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:9" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','30\\31')" tabindex="-1">Settings</a><ul class="level3 dynamic" id="MainMenu:submenu:9" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/COA.aspx?MenuID=32" tabindex="-1">Chart of Accounts</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/voucherNumberInfo.aspx" tabindex="-1">Voucher Number Information</a></li>
-			</ul></li><li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:13" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','30\\203')" tabindex="-1">Vouchers</a><ul class="level3 dynamic" id="MainMenu:submenu:13" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/BankPaymentVoucher.aspx?vType=bp&amp;MenuID=209" tabindex="-1">Bank Payment</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/BankPaymentVoucher.aspx?vType=br&amp;MenuID=210" tabindex="-1">Bank Receipt</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/CashPaymentVoucher.aspx?vType=cp&amp;MenuID=211" tabindex="-1">Cash Payment</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/CashPaymentVoucher.aspx?vType=cr&amp;MenuID=212" tabindex="-1">Cash Receipt</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/JournalVoucher.aspx?vType=jv&amp;MenuID=213" tabindex="-1">Journal Voucher</a></li>
-			</ul></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/Posting.aspx" tabindex="-1">Posting</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/BulkReconcileFromExcel.aspx?MenuID=101" tabindex="-1">Bank Reconciliation</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/Budget.aspx?MenuID=2216" tabindex="-1">Budget Manager</a></li><li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:23" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','30\\4230')" tabindex="-1">Invoice</a><ul class="level3 dynamic" id="MainMenu:submenu:23" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/Customer.aspx?MenuID=2217" tabindex="-1">Customer</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/invoice.aspx" tabindex="-1">Invoice Management</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/Products.aspx" tabindex="-1">Product</a></li>
-			</ul></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/TaxDetails.aspx" tabindex="-1">Tax Details</a></li><li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:29" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','30\\4231')" tabindex="-1">Bill</a><ul class="level3 dynamic" id="MainMenu:submenu:29" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/Vendor.aspx?MenuID=2218" tabindex="-1">Vendor</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/Bill.aspx" tabindex="-1">Bill Management</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/Items.aspx?MenuID=4229" tabindex="-1">Items</a></li>
-			</ul></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/DayClosing.aspx" tabindex="-1">Day Closing Cash Count</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/AssetRegister.aspx?MenuID=3218" tabindex="-1">Asset Register</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level2 dynamic" href="../AMS/Close.aspx?MenuID=96" tabindex="-1">Year Closing</a></li>
-		</ul></li><li class="has-popup static" aria-haspopup="MainMenu:submenu:38" role="menuitem" style="position: relative; float: left;"><a class="level1 static" href="#" onclick="__doPostBack('ctl00$MainMenu','99')" tabindex="-1">Manage Vendor</a><ul class="level2 dynamic" id="MainMenu:submenu:38" style="display: none; position: absolute; top: 100%; left: 0px;">
-			<li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:39" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','99\\121')" tabindex="-1">Payroll</a><ul class="level3 dynamic" id="MainMenu:submenu:39" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/PayCode.aspx?MenuID=122" tabindex="-1">Pay Codes</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/PayCodeHead.aspx?MenuID=123" tabindex="-1">PayCode Heads</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/HeadDetail.aspx?MenuID=124" tabindex="-1">Head Details</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Loan.aspx?MenuID=126" tabindex="-1">Loans</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Fund.aspx?MenuID=5230" tabindex="-1">CP Fund</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/AdjustIncomeTax.aspx?MenuID=5231" tabindex="-1">Adjust Income Tax</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/ListPayroll.aspx?MenuID=127" tabindex="-1">Generate Payroll</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/AdvanceSalaryDisbursement.aspx?MenuID=216" tabindex="-1">Advance Salary Disbursement</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/SalaryDeductionStatement.aspx?MenuID=217" tabindex="-1">Income Tax Deduction Report</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/LoanReport.aspx?MenuID=5229" tabindex="-1">Loan Report</a></li>
-			</ul></li><li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:51" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','99\\115')" tabindex="-1">Organization</a><ul class="level3 dynamic" id="MainMenu:submenu:51" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Organization.aspx?MenuID=116" tabindex="-1">Organization</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Section.aspx?MenuID=117" tabindex="-1">Maintain Sections</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/MaintainDepartment.aspx?MenuID=118" tabindex="-1">Maintain Departments</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/EmployeeInfo.aspx?MenuID=119" tabindex="-1">Maintain Employees</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/MaintainBPS.aspx?MenuID=120" tabindex="-1">Maintain Pay Scale</a></li>
-			</ul></li><li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:58" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','99\\100')" tabindex="-1">Setup</a><ul class="level3 dynamic" id="MainMenu:submenu:58" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=101&amp;Reference_Code=Province" tabindex="-1">Province</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=102&amp;Reference_Code=City" tabindex="-1">City</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=103&amp;Reference_Code=Marital_Status" tabindex="-1">Marital Status</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=104&amp;Reference_Code=Gender" tabindex="-1">Gender</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=105&amp;Reference_Code=Status" tabindex="-1">Status</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=106&amp;Reference_Code=Job_Status" tabindex="-1">Job Status</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=107&amp;Reference_Code=Religion" tabindex="-1">Religion</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=108&amp;Reference_Code=Relation" tabindex="-1">Relation</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=109&amp;Reference_Code=Education" tabindex="-1">Education</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=110&amp;Reference_Code=Universities" tabindex="-1">Universities</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=111&amp;Reference_Code=Payroll_Status" tabindex="-1">Payroll Status</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=112&amp;Reference_Code=Designation" tabindex="-1">Designation</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=113&amp;Reference_Code=Blood_Group" tabindex="-1">Blood Group</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../HRMS/Setup.aspx?MenuID=114&amp;Reference_Code=Bank" tabindex="-1">Bank</a></li>
-			</ul></li>
-		</ul></li><li class="has-popup static" aria-haspopup="MainMenu:submenu:75" role="menuitem" style="position: relative; float: left;"><a class="level1 static" href="#" onclick="__doPostBack('ctl00$MainMenu','33')" tabindex="-1">Store Requests</a><ul class="level2 dynamic" id="MainMenu:submenu:75" style="display: none; position: absolute; top: 100%; left: 0px;">
-			<li class="has-popup dynamic" aria-haspopup="MainMenu:submenu:76" role="menuitem" style="position: relative;"><a class="popout-dynamic level2 dynamic" href="#" onclick="__doPostBack('ctl00$MainMenu','33\\47')" tabindex="-1">Accounts</a><ul class="level3 dynamic" id="MainMenu:submenu:76" style="display: none; position: absolute; top: 0px; left: 100%;">
-				<li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/GeneralLedger.aspx?MenuID=215" tabindex="-1">General Ledger</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/BudgetVarianceReport.aspx?MenuID=2219" tabindex="-1">Budget Variance Report</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/TrialBalance.aspx?MenuID=93" tabindex="-1">Trial Balance</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/BalanceSheet.aspx?MenuID=95" tabindex="-1">Balance Sheet</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/MonthlyExpenditureReport.aspx?MenuID=3223" tabindex="-1">Monthly Expenditure  Report</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/IncomeExpenditureReport.aspx?MenuID=3229" tabindex="-1">Income Statement</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/MonthlyIncomeReport.aspx?MenuID=3224" tabindex="-1">Monthly Income  Report</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/AgedReceivable.aspx?MenuID=3224" tabindex="-1">Aged Receivables</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/AgedPayables.aspx?MenuID=3224" tabindex="-1">Aged Payables</a></li><li role="menuitem" class="dynamic" style="position: relative;"><a class="level3 dynamic" href="../AMS/InvestmentMaturity.aspx?MenuID=3227" tabindex="-1">Investment Maturity</a></li>
-			</ul></li>
-		</ul></li>
-	</ul>
-</div><div style="clear: left;"></div><a id="MainMenu_SkipLink"></a>
-                </div>
-            </div>
+                    <asp:Literal runat="server" ID="warehouseNav">
+    <ul class="main-menu">
+                            <li><a href="ManageInventory.aspx">Manage Inventory</a>
 
+                               <ul>
+                                    <li><a href="ManageProducts.aspx">Manage Products</a></li>
+                                    <li><a href="ManageCategory.aspx">Manage Categories</a></li>
+                                    <li><a href="ManageDepartment.aspx">Manage Departments</a></li>
+                                    <li><a href="ViewInventory.aspx">Manage Stocks</a></li>
+                               </ul>
+
+                            </li>
+                            <li><a href="ManageOrders.aspx">Manage Orders</a>
+
+                                <ul>
+                                    <li class="hasChild"><a href="PlaceOrder.aspx">Place Orders</a>
+
+                                        <ul>
+                                            <li><a href="PlaceOrder.aspx">Auto Purchase</a></li>
+                                            <li><a href="OrderPurchaseManual.aspx">Manual Purchase</a></li>
+                                       </ul>
+
+                                    </li>
+                                    <li><a href="OrderSalesManual.aspx">Generate Sale Order</a></li>
+                                    <li class="hasChild"><a href="RecieveOrder.aspx">Recieve Orders</a>
+
+                                        <ul>
+                                            <li><a href="RecieveOrder.aspx">Auto Recieving</a></li>
+                                            <li><a href="ViewPurchaseOrders.aspx">Manual Recieving</a></li>
+                                       </ul>
+
+                                    </li>
+                                    <li><a href="ViewPlacedOrders.aspx">View Orders</a></li>
+                               </ul>
+
+                            </li>
+                            <li><a href="ManageVendor.aspx">Manage Vendor</a></li>
+                            <li><a href="Warehouse_StoreRequests.aspx">Store Requests</a></li>
+                            <li><a href="PackingListGeneration.aspx">Generate Packing List</a></li>
+	                    </ul>
+            </asp:Literal>
+            <asp:Literal runat="server" ID="storeNav">
+                 <ul class="main-menu">
+                            <li><a href="ViewInventory.aspx">Store Inventory</a></li>
+                            <li><a href="StoreTransfers_StoreRequests.aspx">Store Transfers</a></li>
+                            <li><a href="ReceiveStock.aspx">Store Receivings</a></li>
+                            <li><a href="StoreRequestsMain.aspx">Store Requests</a>
+                                <ul>
+                                    <li><a href="AutoRequest_Store.aspx">Auto Generate Requests</a></li>
+                                    <li><a href="StoreRequests.aspx">Manual Generate Requests</a></li>
+                                </ul>
+                            </li>
+                            
+	                    </ul>
+            </asp:Literal>
+
+            <asp:Literal runat="server" ID="headofficeNav">
+                    
+                <ul class="main-menu">
+                            <li><a href="ManageStore.aspx">Manage Stores</a></li>
+                            <li><a href="ManageWarehouse.aspx">Manage WareHouse</a></li>
+                            <li><a href="CompanySettings.aspx">Manage Company Information</a></li>
+                            <li><a href="Reports.aspx">View Reports</a></li>
+                            <li><a href="RegisterUsers.aspx">Register User</a></li>
+	                    </ul>
+                    
+            </asp:Literal>
+	                   
+                <div style="clear: left;"></div>
+                
+            </div><div style="clear: left;"></div>
+
+        </div>
+          <div style="clear: left;"></div>
         <div class="body-cont">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -158,5 +201,25 @@
               </div>
 
           </div>
+
+       <%-- <script>
+            $(document).ready(function () {
+               
+                getMenu();
+
+                function getMenu(){
+                    $("li").each(function () {
+                        if ($(this).children("ul").length > 0) {
+                            alert($(this).text());
+                            getMenu();
+                           
+
+                        }
+                        
+                    });
+                }
+
+            });
+        </script>--%>
 </body>
 </html>

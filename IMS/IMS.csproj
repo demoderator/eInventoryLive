@@ -181,9 +181,19 @@
     <Content Include="generateBarCode.aspx" />
     <Content Include="HAADPopulation.aspx" />
     <Content Include="HeadOfficeMain.aspx" />
+    <Content Include="Images\arrow.gif" />
+    <Content Include="Images\body-bg-login.jpg" />
+    <Content Include="Images\body-bg-w.jpg" />
+    <Content Include="Images\body-bg.jpg" />
+    <Content Include="Images\btm-bg.gif" />
     <Content Include="Images\close-icon.png" />
+    <Content Include="Images\del-icon.png" />
+    <Content Include="Images\delete-icon.png" />
+    <Content Include="Images\edit-icon.png" />
     <Content Include="Images\Gakuseisean-Ivista-2-Start-Menu-Search %281%29.ico" />
     <Content Include="Images\Gakuseisean-Ivista-2-Start-Menu-Search.ico" />
+    <Content Include="Images\login-bg.png" />
+    <Content Include="Images\logo1.png" />
     <Content Include="Images\search-icon-512.png" />
     <Content Include="ImportingData.aspx" />
     <Content Include="IMSLogin.aspx" />
@@ -200,6 +210,7 @@
     <Content Include="ManageVendor.aspx" />
     <Content Include="ManageWarehouse.aspx" />
     <Content Include="MasterProductSearch.aspx" />
+    <Content Include="navigationMain.aspx" />
     <Content Include="OrderPurchaseManual.aspx" />
     <Content Include="OrderSalesManual.aspx" />
     <Content Include="packages.config" />
@@ -263,10 +274,12 @@
     <Content Include="StoreTransfers_StoreRequestsResponse.aspx" />
     <Content Include="Style\chosen.css" />
     <Content Include="Style\demo.css" />
+    <Content Include="Style\fonts.css" />
     <Content Include="Style\jquery-ui.css" />
     <Content Include="Style\jquery-ui.min.css" />
     <Content Include="Style\jquery.navgoco.css" />
     <Content Include="Style\popup-theme.css" />
+    <Content Include="Style\theme.css" />
     <Content Include="UserControl\ProductSearch.ascx" />
     <Content Include="UserControl\SuperMasterProducts.ascx" />
     <Content Include="UserControl\uc_printBarcode.ascx" />
@@ -300,6 +313,9 @@
     <Content Include="Site.Mobile.Master" />
     <None Include="Properties\PublishProfiles\DPS.pubxml" />
     <None Include="Properties\PublishProfiles\SA.pubxml" />
+    <Content Include="Style\fonts\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Style\fonts\MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff" />
+    <Content Include="Style\fonts\s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -523,6 +539,13 @@
       <DependentUpon>MasterProductSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="navigationMain.aspx.cs">
+      <DependentUpon>navigationMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="navigationMain.aspx.designer.cs">
+      <DependentUpon>navigationMain.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OrderPurchaseManual.aspx.cs">
       <DependentUpon>OrderPurchaseManual.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
