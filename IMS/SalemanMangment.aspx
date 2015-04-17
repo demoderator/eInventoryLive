@@ -6,7 +6,7 @@
       
         
            
-                <table cellspacing="0" cellpadding="5" border="0" width="100%">
+                <table cellspacing="0" cellpadding="5" border="0" width="100%" class="formTbl">
         <tr>
                <td>
                               <asp:Label runat="server" AssociatedControlID="UserName" CssClass=" control-label">Name</asp:Label>

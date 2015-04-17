@@ -1173,6 +1173,9 @@ ul.actions li.firstli{
     overflow-x:auto;
 }
 
+.formTbl tr td {
+    padding:5px;
+}
 table.table-striped tr td .control-label {
     text-align:left;
 }
