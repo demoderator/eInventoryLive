@@ -138,7 +138,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Order No." HeaderStyle-Width ="110px">
                         <ItemTemplate>
-                            <asp:Literal ID="OrderNo" runat="server" Text='<%# Eval("OrderID") %>'></asp:Literal>
+                            <asp:Label ID="OrderNo" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
                             <%--<asp:Label ID="OrderNO" CssClass="control-label" runat="server" Text='<%# Eval("OrderID") %>' Width="100px" ></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
@@ -147,7 +147,7 @@
                      
                      <asp:TemplateField HeaderText="Order Date" HeaderStyle-Width ="150px">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="OrderDate" Text='<%# Eval("OrderDate") %>'></asp:Literal>
+                            <asp:Label runat="server" ID="OrderDate" Text='<%# Eval("OrderDate") %>'></asp:Label>
                             <%--<asp:Label ID="OrderDate" CssClass="control-label" runat="server" Text='<%# Eval("OrderDate") %>'  Width="180px"></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="180px" HorizontalAlign="Left"/>
@@ -155,7 +155,7 @@
 
                      <asp:TemplateField HeaderText="Order To" HeaderStyle-Width ="200px">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="OrderTo" Text='<%# Eval("Location") %>'></asp:Literal>
+                            <asp:Label runat="server" ID="OrderTo" Text='<%# Eval("Location") %>'></asp:Label>
                             <%--<asp:Label ID="OrderTo" CssClass="control-label" runat="server" Text='<%# Eval("Location") %>'  Width="300px" ></asp:Label>--%>
                         </ItemTemplate>
                          <ItemStyle  Width="300px" HorizontalAlign="Left"/>

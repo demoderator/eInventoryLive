@@ -187,7 +187,27 @@
                 <br />
             </div>
         </div> 
-             
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="bonus12" CssClass="col-md-2 control-label">Bonus Quantity 12</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="bonus12" CssClass="form-control" />
+                <br />
+            </div>
+        </div> 
+         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="bonus25" CssClass="col-md-2 control-label">Bonus Quantity 25</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="bonus25" CssClass="form-control" />
+                <br />
+            </div>
+        </div> 
+          <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="bonus50" CssClass="col-md-2 control-label">Bonus Quantity 50</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="bonus50" CssClass="form-control" />
+                <br />
+            </div>
+        </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button ID="btnCreateProduct" runat="server" OnClick="btnCreateProduct_Click"  Text="ADD" CssClass="btn btn-default" ValidationGroup="exSave"/>

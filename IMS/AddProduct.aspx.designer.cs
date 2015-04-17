@@ -220,6 +220,33 @@ namespace IMS {
         protected global::System.Web.UI.WebControls.TextBox binNumber;
         
         /// <summary>
+        /// bonus12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox bonus12;
+        
+        /// <summary>
+        /// bonus25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox bonus25;
+        
+        /// <summary>
+        /// bonus50 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox bonus50;
+        
+        /// <summary>
         /// btnCreateProduct control.
         /// </summary>
         /// <remarks>

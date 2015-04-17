@@ -22,7 +22,7 @@
                  <Columns>
                     <asp:TemplateField HeaderText="Request No."   HeaderStyle-Width ="110px" Visible="false">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="RequestedNO"  Text='<%# Eval("OrderID") %>'></asp:Literal>
+                            <asp:Label runat="server" ID="RequestedNO"  Text='<%# Eval("OrderID") %>'></asp:Label>
                             <%--<asp:Label ID="RequestedNO" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderID") %>' Width="100px" ></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="110px" HorizontalAlign="Left"/>
@@ -31,7 +31,7 @@
                      
                      <asp:TemplateField HeaderText="Request Date" HeaderStyle-Width ="150px">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="RequestedDate" Text='<%# Eval("OrderDate") %>' ></asp:Literal>
+                            <asp:Label runat="server" ID="RequestedDate" Text='<%# Eval("OrderDate") %>' ></asp:Label>
                             <%--<asp:Label ID="RequestedDate" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderDate") %>'  Width="140px"></asp:Label>--%>
                         </ItemTemplate>
                         <ItemStyle  Width="150px" HorizontalAlign="Left"/>
@@ -39,7 +39,7 @@
 
                      <asp:TemplateField HeaderText="Requested From" HeaderStyle-Width ="200px">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="RequestedFrom" Text='<%# Eval("reqFrom") %>'></asp:Literal>
+                            <asp:Label runat="server" ID="RequestedFrom" Text='<%# Eval("reqFrom") %>'></asp:Label>
                             <%--<asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFrom") %>'  Width="200px" ></asp:Label>--%>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>
@@ -47,7 +47,7 @@
 
                      <asp:TemplateField HeaderText="Requested From ID" HeaderStyle-Width ="200px" Visible="false">
                         <ItemTemplate>
-                            <asp:Literal runat="server" ID="RequestedFromID" Text='<%# Eval("reqFromID") %>'></asp:Literal>
+                            <asp:Label runat="server" ID="RequestedFromID" Text='<%# Eval("reqFromID") %>'></asp:Label>
                             <%--<asp:Label ID="RequestedFromID" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("reqFromID") %>'  Width="200px" ></asp:Label>--%>
                         </ItemTemplate>
                          <ItemStyle  Width="250px" HorizontalAlign="Left"/>

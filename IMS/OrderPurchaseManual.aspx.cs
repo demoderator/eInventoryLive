@@ -450,6 +450,7 @@ namespace IMS
                 SqlCommand command = new SqlCommand("Sp_FillPO_Details", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 int OrderNumber = 0;
+                command.Parameters.AddWithValue("@p_OrderDetailID", DBNull.Value);
                 if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                 {
                     command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
