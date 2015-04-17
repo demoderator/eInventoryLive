@@ -202,24 +202,12 @@
 
           </div>
 
-       <%-- <script>
+        <script>
             $(document).ready(function () {
                
-                getMenu();
-
-                function getMenu(){
-                    $("li").each(function () {
-                        if ($(this).children("ul").length > 0) {
-                            alert($(this).text());
-                            getMenu();
-                           
-
-                        }
-                        
-                    });
-                }
+                $(".table-striped").parent("div").addClass("putScroll");
 
             });
-        </script>--%>
+        </script>
 </body>
 </html>

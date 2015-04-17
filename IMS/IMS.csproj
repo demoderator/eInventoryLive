@@ -195,6 +195,7 @@
     <Content Include="Images\Gakuseisean-Ivista-2-Start-Menu-Search.ico" />
     <Content Include="Images\login-bg.png" />
     <Content Include="Images\logo1.png" />
+    <Content Include="Images\Mail.png" />
     <Content Include="Images\search-icon-512.png" />
     <Content Include="ImportingData.aspx" />
     <Content Include="IMSLogin.aspx" />
@@ -211,7 +212,6 @@
     <Content Include="ManageVendor.aspx" />
     <Content Include="ManageWarehouse.aspx" />
     <Content Include="MasterProductSearch.aspx" />
-    <Content Include="navigationMain.aspx" />
     <Content Include="OrderPurchaseManual.aspx" />
     <Content Include="OrderSalesManual.aspx" />
     <Content Include="OrderSalesManual_Details.aspx" />
@@ -549,13 +549,6 @@
       <DependentUpon>MasterProductSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="navigationMain.aspx.cs">
-      <DependentUpon>navigationMain.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="navigationMain.aspx.designer.cs">
-      <DependentUpon>navigationMain.aspx</DependentUpon>
-    </Compile>
     <Compile Include="OrderPurchaseManual.aspx.cs">
       <DependentUpon>OrderPurchaseManual.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

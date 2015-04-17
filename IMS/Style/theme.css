@@ -1168,3 +1168,7 @@ ul.actions li.firstli{
     .hasChild:hover {
     background:#5ba9e8 url(../Images/arrow.gif) 180px 5px no-repeat !important;
     }
+
+.putScroll {
+    overflow-x:auto;
+}
