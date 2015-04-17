@@ -151,7 +151,21 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Sent Quantity" HeaderStyle-Width="200px">
                                         <ItemTemplate>
-                                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Quantity") %>' Width="110px"></asp:Label>
+                                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("SendQuantity") %>' Width="110px"></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle Width="120px" HorizontalAlign="Left" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Bonus Quantity" HeaderStyle-Width="200px">
+                                        <ItemTemplate>
+                                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("BonusQuantity") %>' Width="110px"></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle Width="120px" HorizontalAlign="Left" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Discount %" HeaderStyle-Width="200px">
+                                        <ItemTemplate>
+                                            <asp:Label ID="RequestedFrom" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("DiscountPercentage") %>' Width="110px"></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle Width="120px" HorizontalAlign="Left" />
                                     </asp:TemplateField>

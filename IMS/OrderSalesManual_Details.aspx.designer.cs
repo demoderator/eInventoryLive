@@ -10,51 +10,51 @@
 namespace IMS {
     
     
-    public partial class SiteMaster {
+    public partial class OrderSalesManual_Details {
         
         /// <summary>
-        /// HeadContent control.
+        /// lblTotalSent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.Label lblTotalSent;
         
         /// <summary>
-        /// warehouseNav control.
+        /// lblTotalQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal warehouseNav;
+        protected global::System.Web.UI.WebControls.Label lblTotalQuantity;
         
         /// <summary>
-        /// storeNav control.
+        /// StockDisplayGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal storeNav;
+        protected global::System.Web.UI.WebControls.GridView StockDisplayGrid;
         
         /// <summary>
-        /// headofficeNav control.
+        /// btnAcceptStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal headofficeNav;
+        protected global::System.Web.UI.WebControls.Button btnAcceptStock;
         
         /// <summary>
-        /// MainContent control.
+        /// btnDeclineStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button btnDeclineStock;
     }
 }

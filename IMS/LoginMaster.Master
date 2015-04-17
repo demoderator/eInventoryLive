@@ -11,11 +11,28 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+     <link href="Style/theme.css" rel="stylesheet" type="text/css"  />
+    <link href="Style/fonts.css" rel="stylesheet" type="text/css"  />
+    <style>
+        body {
+          background: #f7faff url(Images/body-bg-login.jpg) top repeat-x;
+        }
+        .container {
+        margin:0px auto -220px !important;
+        }
+    </style>
 
 </head>
 <body>
+    <div class="container">
+        <div class="top-head">
+                
+                <div class="logo">
+                </div>
+               
+            </div>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -38,29 +55,29 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" >E-Inventory</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                   
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
+        
+        <div class="login-cont">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Digital Processing System</p>
-            </footer>
+            
+           
         </div>
     </form>
+        </div>
+
+    
+      <div class="footer">
+
+              <div class="fcont">
+
+            
+                <p>&copy; <%: DateTime.Now.Year %> - Software Alliance LLC.</p>
+
+                       
+            
+
+              </div>
+
+          </div>
 </body>
 </html>

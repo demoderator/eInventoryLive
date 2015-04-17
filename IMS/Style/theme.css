@@ -82,7 +82,7 @@ h1{
 .container{
 	min-height:100%;
 	width:1170px;
-	margin:0px auto -91px;
+	margin:0px auto;
 	}
 	
 .top-head{
@@ -173,7 +173,7 @@ ul.main-menu{
 	height:38px;
 	font-family:'Droid Sans';
 	float:left;
-	width:700px;	
+	/*width:700px;*/	
 	}
 	
 ul.main-menu>li{
@@ -198,7 +198,7 @@ box-shadow: inset 1px 1px 1px 0px #366ba3;
 	}
 	
 ul.main-menu>li>a{
-	padding:3px 6px 4px 6px;
+	padding:5px 10px 6px 10px;
 	}
 	
 ul.main-menu>li>a:hover{
@@ -240,12 +240,12 @@ ul.main-menu li.active{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf5fc', endColorstr='#f5fafe',GradientType=0 );
 	}
 
-ul.main-menu li ul{
+ul.main-menu ul{
 	display:none;
 	width:200px !important;
 	position:absolute;
-	display:block;
-	top:30px;
+	
+	top:35px;
 	z-index:99999 !important;
 	left:10px;
 	font-family:'Open Sans';
@@ -265,16 +265,22 @@ ul.main-menu li ul{
 	background: linear-gradient(top, rgba(235,243,251,1) 0%,rgba(226,236,247,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf3fb', endColorstr='#e2ecf7',GradientType=0 );
 	}
+
+li{
+    position:relative;
+}
+
+
 	
 .dialogzone {
 	z-index:45 !important;
 	}
 	
-ul.main-menu li:hover ul{
+li:hover ul{
 	width:200px !important;
 	position:absolute;
 	display:block;
-	top:30px;
+	top:35px;
 	z-index:99999;
 	left:10px;
 	font-family:'Open Sans';
@@ -295,16 +301,20 @@ ul.main-menu li:hover ul{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf3fb', endColorstr='#e2ecf7',GradientType=0 );
 	}
 	
-ul.main-menu li:hover ul li:hover ul
+ul.main-menu ul ul, ul.main-menu ul li:hover ul ul
 {
-    display:block;
+    display:none !important;
     position:absolute;
-    top:0px;
+    top:-5px !important;
     left:200px !important;
     z-index:99999;
 }
+
+ul.main-menu ul li:hover ul, ul.main-menu ul li:hover ul li:hover ul {
+        display:block !important;
+    }
 	
-ul.main-menu li ul li{
+ul.main-menu ul li{
 	padding:3px 20px;
 	margin-top:3px;
 	color:#478edc;
@@ -313,13 +323,13 @@ ul.main-menu li ul li{
 	position:relative !important;
 	}
 	
-ul.main-menu li ul li:hover{
+ul.main-menu ul li:hover{
 	background:#5ba9e8;
 	color:#FFF;
 	}
 	
 
-ul.main-menu li ul li.selected{
+ul.main-menu ul li.selected{
 	background:#4a93e0;
 	color:#FFFFFF;
 	font-weight:600;
@@ -745,10 +755,8 @@ input, select, textarea{
 	}
 	
 input.login{
-	-webkit-box-shadow: inset 0px 0px 3px 1px #efefef;
-	box-shadow: inset 0px 0px 3px 1px #efefef;
-	border:1px solid #cccccb;
-	width:278px;
+	
+	width:278px !important;
 	padding:5px 10px;
 	height:20px;
 	-webkit-border-radius: 3px;
@@ -756,6 +764,9 @@ input.login{
 	margin:10px 0;
 	font-family:Arial;
 	color:#000;
+    -webkit-box-shadow: inset 0px 0px 3px 1px #efefef;
+	box-shadow: inset 0px 0px 3px 1px #efefef;
+	border:1px solid #cccccb;
 	}
 	
 input.login:focus{
@@ -1145,3 +1156,19 @@ ul.actions li.firstli{
     padding : 1px ;
     width:400px;
    }
+
+
+
+
+
+.hasChild {
+    background:url(../Images/arrow.gif) 180px 5px no-repeat;
+}
+
+    .hasChild:hover {
+    background:#5ba9e8 url(../Images/arrow.gif) 180px 5px no-repeat !important;
+    }
+
+.putScroll {
+    overflow-x:auto;
+}

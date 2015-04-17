@@ -138,7 +138,7 @@ namespace IMS
                         connection.Close();
                     }
                     connection.Open();
-                    SqlCommand command = new SqlCommand("sp_GetpackingList", connection);
+                    SqlCommand command = new SqlCommand("sp_getSaleOrderDetail", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderDetID", Convert.ToInt32(OrderDetailID.Text));
 

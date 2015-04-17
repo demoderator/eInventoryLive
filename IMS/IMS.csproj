@@ -175,15 +175,27 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DisplayOrderDetailEntries.aspx" />
     <Content Include="Edit_DeleteProduct.aspx" />
     <Content Include="Edit_DeleteStock.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="generateBarCode.aspx" />
     <Content Include="HAADPopulation.aspx" />
     <Content Include="HeadOfficeMain.aspx" />
+    <Content Include="Images\arrow.gif" />
+    <Content Include="Images\body-bg-login.jpg" />
+    <Content Include="Images\body-bg-w.jpg" />
+    <Content Include="Images\body-bg.jpg" />
+    <Content Include="Images\btm-bg.gif" />
     <Content Include="Images\close-icon.png" />
+    <Content Include="Images\del-icon.png" />
+    <Content Include="Images\delete-icon.png" />
+    <Content Include="Images\edit-icon.png" />
     <Content Include="Images\Gakuseisean-Ivista-2-Start-Menu-Search %281%29.ico" />
     <Content Include="Images\Gakuseisean-Ivista-2-Start-Menu-Search.ico" />
+    <Content Include="Images\login-bg.png" />
+    <Content Include="Images\logo1.png" />
+    <Content Include="Images\Mail.png" />
     <Content Include="Images\search-icon-512.png" />
     <Content Include="ImportingData.aspx" />
     <Content Include="IMSLogin.aspx" />
@@ -202,6 +214,7 @@
     <Content Include="MasterProductSearch.aspx" />
     <Content Include="OrderPurchaseManual.aspx" />
     <Content Include="OrderSalesManual.aspx" />
+    <Content Include="OrderSalesManual_Details.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -264,10 +277,12 @@
     <Content Include="StoreTransfers_StoreRequestsResponse.aspx" />
     <Content Include="Style\chosen.css" />
     <Content Include="Style\demo.css" />
+    <Content Include="Style\fonts.css" />
     <Content Include="Style\jquery-ui.css" />
     <Content Include="Style\jquery-ui.min.css" />
     <Content Include="Style\jquery.navgoco.css" />
     <Content Include="Style\popup-theme.css" />
+    <Content Include="Style\theme.css" />
     <Content Include="UserControl\ProductSearch.ascx" />
     <Content Include="UserControl\SuperMasterProducts.ascx" />
     <Content Include="UserControl\uc_printBarcode.ascx" />
@@ -277,6 +292,7 @@
     <Content Include="ViewPackingList_SO.aspx" />
     <Content Include="ViewPlacedOrders.aspx" />
     <Content Include="ViewPurchaseOrders.aspx" />
+    <Content Include="ViewSalesOrders.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="WarehouseMain.aspx" />
     <Content Include="WarehouseSalesOrder.aspx" />
@@ -303,6 +319,9 @@
     <Content Include="Site.Mobile.Master" />
     <None Include="Properties\PublishProfiles\DPS.pubxml" />
     <None Include="Properties\PublishProfiles\SA.pubxml" />
+    <Content Include="Style\fonts\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Style\fonts\MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff" />
+    <Content Include="Style\fonts\s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -374,6 +393,13 @@
     </Compile>
     <Compile Include="CompanySettings.aspx.designer.cs">
       <DependentUpon>CompanySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayOrderDetailEntries.aspx.cs">
+      <DependentUpon>DisplayOrderDetailEntries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisplayOrderDetailEntries.aspx.designer.cs">
+      <DependentUpon>DisplayOrderDetailEntries.aspx</DependentUpon>
     </Compile>
     <Compile Include="Edit_DeleteProduct.aspx.cs">
       <DependentUpon>Edit_DeleteProduct.aspx</DependentUpon>
@@ -539,6 +565,13 @@
     </Compile>
     <Compile Include="OrderSalesManual.aspx.designer.cs">
       <DependentUpon>OrderSalesManual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSalesManual_Details.aspx.cs">
+      <DependentUpon>OrderSalesManual_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderSalesManual_Details.aspx.designer.cs">
+      <DependentUpon>OrderSalesManual_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="PackingListGeneration.aspx.cs">
       <DependentUpon>PackingListGeneration.aspx</DependentUpon>
@@ -744,6 +777,13 @@
     </Compile>
     <Compile Include="ViewPurchaseOrders.aspx.designer.cs">
       <DependentUpon>ViewPurchaseOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesOrders.aspx.cs">
+      <DependentUpon>ViewSalesOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSalesOrders.aspx.designer.cs">
+      <DependentUpon>ViewSalesOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

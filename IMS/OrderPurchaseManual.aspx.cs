@@ -328,9 +328,17 @@ namespace IMS
                     {
                         command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
                     }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@p_OrderQuantity", DBNull.Value);
+                    }
                     if (int.TryParse(SelectPrice.Text.ToString(), out BonusOrdered))
                     {
                         command.Parameters.AddWithValue("@p_OrderBonusQuantity", BonusOrdered);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@p_OrderBonusQuantity", DBNull.Value);
                     }
                    
                     command.Parameters.AddWithValue("@p_status", "Pending");
@@ -404,23 +412,34 @@ namespace IMS
                         SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByStore", connection);
                         command.CommandType = CommandType.StoredProcedure;
 
-                        int OrderNumber,BonusOrdered, ProductNumber, Quantity = 0;
+                        int OrderNumber,BonusOrdered, ProductNumber, Quantity;
+                        OrderNumber = BonusOrdered = ProductNumber = Quantity = 0;
 
                         if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                         {
                             command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
                         }
+                       
                         if (int.TryParse(SelectProduct.SelectedValue.ToString(), out ProductNumber))
                         {
                             command.Parameters.AddWithValue("@p_ProductID", ProductNumber);
                         }
+                        
                         if (int.TryParse(SelectQuantity.Text.ToString(), out Quantity))
                         {
                             command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
                         }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@p_OrderQuantity", DBNull.Value);
+                        }
                         if (int.TryParse(SelectPrice.Text.ToString(), out BonusOrdered))
                         {
                             command.Parameters.AddWithValue("@p_OrderBonusQuantity", BonusOrdered);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@p_OrderBonusQuantity", DBNull.Value);
                         }
                         
                         command.Parameters.AddWithValue("@p_status", "Pending");
@@ -450,6 +469,7 @@ namespace IMS
                 SqlCommand command = new SqlCommand("Sp_FillPO_Details", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 int OrderNumber = 0;
+                command.Parameters.AddWithValue("@p_OrderDetailID", DBNull.Value);
                 if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                 {
                     command.Parameters.AddWithValue("@p_OrderID", OrderNumber);
