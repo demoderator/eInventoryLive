@@ -175,9 +175,11 @@ namespace IMS
             {
                 if (e.CommandName.Equals("UpdateStock"))
                 {
-                    int quan = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtQuantity")).Text);
+                    int quan, bonusquantity;
+                    quan = bonusquantity = 0;
+                    int.TryParse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtQuantity")).Text,out quan);
                     int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("OrderDetailNo")).Text);
-                    int bonusquantity = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtBonusQuantity")).Text);
+                    int.TryParse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtBonusQuantity")).Text, out bonusquantity);
                     
                     connection.Open();  
                     SqlCommand command = new SqlCommand("sp_UpdateOrderDetailsQuantity", connection);
@@ -314,7 +316,8 @@ namespace IMS
                     SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByStore", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    int OrderNumber, BonusOrdered, ProductNumber, Quantity = 0;
+                    int OrderNumber, BonusOrdered, ProductNumber, Quantity;
+                    OrderNumber = BonusOrdered = ProductNumber = Quantity = 0;
 
                     if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                     {

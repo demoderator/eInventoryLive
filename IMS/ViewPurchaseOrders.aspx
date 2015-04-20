@@ -20,12 +20,12 @@
                 AutoGenerateColumns="false" OnSelectedIndexChanged="StockDisplayGrid_SelectedIndexChanged" OnPageIndexChanging="StockDisplayGrid_PageIndexChanging"   onrowcancelingedit="StockDisplayGrid_RowCancelingEdit" 
                 onrowcommand="StockDisplayGrid_RowCommand" onrowediting="StockDisplayGrid_RowEditing" >
                  <Columns>
-                    <asp:TemplateField HeaderText="Request No."   HeaderStyle-Width ="110px" Visible="false">
+                    <asp:TemplateField HeaderText="Request No."   HeaderStyle-Width ="60px" >
                         <ItemTemplate>
                             <asp:Label runat="server" ID="RequestedNO"  Text='<%# Eval("OrderID") %>'></asp:Label>
                             <%--<asp:Label ID="RequestedNO" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("OrderID") %>' Width="100px" ></asp:Label>--%>
                         </ItemTemplate>
-                        <ItemStyle  Width="110px" HorizontalAlign="Left"/>
+                        <ItemStyle  Width="60px" HorizontalAlign="Left"/>
 
                     </asp:TemplateField>
                      

@@ -46,7 +46,7 @@ namespace IMS
                         if (StockAt != null)
                         {
                             StockAt.Items.Insert(0, "Select System");
-                            StockAt.SelectedIndex = int.Parse(Session["SelectedIndex"].ToString());
+                            StockAt.SelectedValue = Session["SystemID"].ToString();
                             StockAt.Enabled = false;
                         }
                     }
@@ -317,7 +317,7 @@ namespace IMS
                 {
                     int orderID = int.Parse(Session["OrderNumber"].ToString());
                     connection.Open();
-                    SqlCommand command = new SqlCommand("sp_DeleteOrder", connection);
+                    SqlCommand command = new SqlCommand("sp_DeleteSO", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderID", orderID);
                     command.ExecuteNonQuery();
@@ -370,7 +370,7 @@ namespace IMS
                     int quan = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtQuantity")).Text);
                     int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("OrderDetailNo")).Text);
                     connection.Open();
-                    SqlCommand command = new SqlCommand("sp_UpdateOrderDetailsQuantity", connection);
+                    SqlCommand command = new SqlCommand("sp_UpdateSODetailsQuantity", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderDetailID", orderDetID);
                     command.Parameters.AddWithValue("@p_Qauntity", quan);
@@ -381,7 +381,7 @@ namespace IMS
                 {
                     int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("OrderDetailNo")).Text);
                     connection.Open();
-                    SqlCommand command = new SqlCommand("sp_DeleteOrderDetailsbyID", connection);
+                    SqlCommand command = new SqlCommand("sp_DeleteSO_ID", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_OrderDetailID", orderDetID);
 
@@ -415,7 +415,7 @@ namespace IMS
             {
                 int orderDetID = int.Parse(((Label)StockDisplayGrid.Rows[e.RowIndex].FindControl("OrderDetailNo")).Text);
                 connection.Open();
-                SqlCommand command = new SqlCommand("sp_DeleteOrderDetailsbyID", connection);
+                SqlCommand command = new SqlCommand("sp_DeleteSO_ID", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_OrderDetailID", orderDetID);
 
@@ -483,7 +483,7 @@ namespace IMS
                     try
                     {
                         connection.Open();
-                        SqlCommand command = new SqlCommand("sp_CreateOrder", connection);
+                        SqlCommand command = new SqlCommand("sp_CreateSaleOrder", connection);
                         command.CommandType = CommandType.StoredProcedure;
                         //sets vendor
                         if (int.TryParse(StockAt.SelectedValue.ToString(), out pRequestTo))
@@ -527,7 +527,9 @@ namespace IMS
                         SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByOutStore", connection);
                         command.CommandType = CommandType.StoredProcedure;
 
-                        int OrderNumber, ProductNumber, Quantity = 0;
+
+                        int OrderNumber, BonusOrdered, ProductNumber, Quantity;
+                        OrderNumber = BonusOrdered = ProductNumber = Quantity = 0;
 
                         if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                         {
@@ -541,8 +543,10 @@ namespace IMS
                         {
                             command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
                         }
-
-
+                        else
+                        {
+                            command.Parameters.AddWithValue("@p_OrderQuantity", DBNull.Value);
+                        }
                         command.Parameters.AddWithValue("@p_status", "Pending");
                         command.Parameters.AddWithValue("@p_comments", "Generated to Outside Store");
                         DataSet LinkResult = new DataSet();
@@ -619,7 +623,8 @@ namespace IMS
                             SqlCommand command = new SqlCommand("sp_InserOrderDetail_ByOutStore", connection);
                             command.CommandType = CommandType.StoredProcedure;
 
-                            int OrderNumber, ProductNumber, Quantity = 0;
+                            int OrderNumber, BonusOrdered, ProductNumber, Quantity;
+                            OrderNumber = BonusOrdered = ProductNumber = Quantity = 0;
 
                             if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
                             {
@@ -632,6 +637,10 @@ namespace IMS
                             if (int.TryParse(SelectQuantity.Text.ToString(), out Quantity))
                             {
                                 command.Parameters.AddWithValue("@p_OrderQuantity", Quantity);
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("@p_OrderQuantity", DBNull.Value);
                             }
 
 
@@ -672,7 +681,7 @@ namespace IMS
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("Sp_FillPO_Details", connection);
+                SqlCommand command = new SqlCommand("Sp_FillSO_Details", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 int OrderNumber,DetailID = 0;
                 if (int.TryParse(Session["OrderNumber"].ToString(), out OrderNumber))
@@ -717,7 +726,7 @@ namespace IMS
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("sp_GetSaleOrderDetails_ID", connection);
+                SqlCommand command = new SqlCommand("sp_GetSODetails_ID", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 int OrderNumber = 0;
                 
@@ -761,42 +770,7 @@ namespace IMS
 
         protected void btnCancelOrder_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (Session["OrderNumber"] != null)
-                {
-                    int orderID = int.Parse(Session["OrderNumber"].ToString());
-                    connection.Open();
-                    SqlCommand command = new SqlCommand("sp_DeleteOrder", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@p_OrderID", orderID);
-                    command.ExecuteNonQuery();
-                }
-                Session["OrderNumber"] = null;
-                Session["FromViewPlacedOrders"] = "false";
-                txtProduct.Text = "";
-                SelectProduct.Visible = false;
-                StockAt.Enabled = true;
-                StockDisplayGrid.DataSource = null;
-                StockDisplayGrid.DataBind();
-                SelectQuantity.Text = "";
-                SelectProduct.SelectedIndex = -1;
-                StockAt.SelectedIndex = -1;
-                btnAccept.Visible = false;
-                btnDecline.Visible = false;
-                FirstOrder = false;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
+            
             //must be checked for sessions
             if (Session["OrderSalesDetail"].Equals(true) && Session["OrderSalesDetail"].ToString() != null && Session["OrderSalesDetail"] != null)
             {
@@ -806,6 +780,42 @@ namespace IMS
             }
             else
             {
+                try
+                {
+                    if (Session["OrderNumber"] != null)
+                    {
+                        int orderID = int.Parse(Session["OrderNumber"].ToString());
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("sp_DeleteSO", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@p_OrderID", orderID);
+                        command.ExecuteNonQuery();
+                    }
+                    Session["OrderNumber"] = null;
+                    Session["FromViewPlacedOrders"] = "false";
+                    txtProduct.Text = "";
+                    SelectProduct.Visible = false;
+                    StockAt.Enabled = true;
+                    StockDisplayGrid.DataSource = null;
+                    StockDisplayGrid.DataBind();
+                    SelectQuantity.Text = "";
+                    SelectProduct.SelectedIndex = -1;
+                    StockAt.SelectedIndex = -1;
+                    btnAccept.Visible = false;
+                    btnDecline.Visible = false;
+                    FirstOrder = false;
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
                 Session["OrderNumber"] = "";
                 Session["OrderSalesDetail"] = false;
                 Response.Redirect("ManageOrders.aspx", false);

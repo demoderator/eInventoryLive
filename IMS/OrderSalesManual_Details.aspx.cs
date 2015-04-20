@@ -169,6 +169,9 @@ namespace IMS
                     int bonusquantity = int.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtBonus")).Text);
                     int stockID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblStockID")).Text);
                     int ProductID = int.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblProductID")).Text);
+                    
+                    float Discount = float.Parse(((TextBox)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("txtDiscount")).Text);
+                    
                     float CostPrice = float.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblCostPrice")).Text);
                     float SalePrice = float.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblSalePrice")).Text);
                     long BarCode = long.Parse(((Label)StockDisplayGrid.Rows[StockDisplayGrid.EditIndex].FindControl("lblBarCode")).Text);
@@ -189,6 +192,7 @@ namespace IMS
                     command.Parameters.AddWithValue("@p_SendQuantity", sendquantity);
                     command.Parameters.AddWithValue("@p_BonusQuantity", bonusquantity);
                     command.Parameters.AddWithValue("@p_BarCode", BarCode);
+                    command.Parameters.AddWithValue("@p_Discount", Discount);
 
                     command.ExecuteNonQuery();
 
