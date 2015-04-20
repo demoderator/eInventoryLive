@@ -52,7 +52,7 @@
                         <ItemTemplate>
                             <asp:Label ID="ProductName" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("Product_Name") %>' Width="330px"></asp:Label>
                         </ItemTemplate>
-                         <ItemStyle  Width="330px" HorizontalAlign="Left"/>
+                         <ItemStyle  Width="300px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
                      <asp:TemplateField HeaderText="Product Type">
@@ -62,18 +62,18 @@
                         <ItemStyle  Width="130px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
                     
-                     <asp:TemplateField HeaderText="Unit Cost Price">
+                     <asp:TemplateField HeaderText="Cost Price">
                         <ItemTemplate>
                             <asp:Label ID="UnitCost" CssClass="col-md-2 control-label"  runat="server" Text='<%# Eval("UnitCost") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle  Width="110px" HorizontalAlign="Left"/>
+                        <ItemStyle  Width="90px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
-                     <asp:TemplateField HeaderText="Unit Sale Price">
+                     <asp:TemplateField HeaderText="Sale Price">
                         <ItemTemplate>
                             <asp:Label ID="lblUnitSalePrice" CssClass="col-md-2 control-label" runat="server" Text='<%# Eval("SP") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle  Width="110px" HorizontalAlign="Left"/>
+                        <ItemStyle  Width="90px" HorizontalAlign="Left"/>
                     </asp:TemplateField>
 
                      <asp:TemplateField HeaderText="Action">

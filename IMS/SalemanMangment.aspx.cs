@@ -133,7 +133,8 @@ namespace IMS
             int i;
             GridViewRow row = (GridViewRow)SalemanDisplayGrid.Rows[e.RowIndex];
            bool id =int.TryParse( SalemanDisplayGrid.Rows[e.RowIndex].ToString(), out i);
-           int userid = int.Parse(SalemanDisplayGrid.SelectedRow.Cells[0].Text);
+           //int userid = int.Parse(SalemanDisplayGrid.SelectedRow.Cells[0].Text);
+           Label label = (Label)SalemanDisplayGrid.Rows[e.RowIndex].FindControl("lblUserID");
            TextBox ItemName = (TextBox)SalemanDisplayGrid.Rows[e.RowIndex].FindControl("Name");
            TextBox ItemAddress = (TextBox)SalemanDisplayGrid.Rows[e.RowIndex].FindControl("Address");
            TextBox ItemContact = (TextBox)SalemanDisplayGrid.Rows[e.RowIndex].FindControl("Phone");
@@ -144,13 +145,31 @@ namespace IMS
 
            connection.Open();
 
-           SqlCommand cmd = new SqlCommand("update detail set name='" + ItemName.Text + "',address='" + ItemAddress.Text + "',country='" + ItemContact.Text + "'where id='" + id + "'", connection);
+           SqlCommand cmd = new SqlCommand("update tbl_Users set [U_EmpID]='" + ItemName.Text + "',address='" + ItemAddress.Text + "',[Contact]='" + ItemContact.Text + "'where [UserID]='" + label.Text + "'", connection);
            cmd.ExecuteNonQuery();
 
            connection.Close();
 
            BindGrid();
 
+
+
+        }
+
+        protected void SalemanDisplayGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)SalemanDisplayGrid.Rows[e.RowIndex];
+            Label label = (Label)SalemanDisplayGrid.Rows[e.RowIndex].FindControl("lblUserID");
+
+            SalemanDisplayGrid.EditIndex = -1;
+
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("delete from tbl_Users where [UserID]='" + label.Text + "'", connection);
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            BindGrid();
 
 
         }

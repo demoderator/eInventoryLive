@@ -72,7 +72,7 @@
     </div>
     
      <asp:GridView ID="SalemanDisplayGrid" CssClass="table table-striped table-bordered table-condensed" runat="server" AllowPaging="True" PageSize="10" 
-                AutoGenerateColumns="false" OnRowCommand="SalemanDisplayGrid_RowCommand" OnRowEditing=" SalemanDisplayGrid_RowEditing" OnRowUpdating="SalemanDisplayGrid_RowUpdating">
+                AutoGenerateColumns="false" OnRowCommand="SalemanDisplayGrid_RowCommand" OnRowEditing=" SalemanDisplayGrid_RowEditing" OnRowUpdating="SalemanDisplayGrid_RowUpdating" OnRowDeleting="SalemanDisplayGrid_RowDeleting">
                  <Columns>
 
                       <asp:TemplateField HeaderText="User ID" Visible="false" >
